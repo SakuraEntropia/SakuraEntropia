@@ -1,7 +1,5 @@
 ### Hello World！
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
-
--->
 - 🔭 I’m currently working on Greendemo Renderer
 - 🌱 I’m currently learning Computer Graphics，quantum computing，artificial intelligence，music，animation，and vocaloid 
 - my plans：
@@ -23,8 +21,7 @@
 
 ![](https://activity-graph.herokuapp.com/graph?username=David20080125&theme=github)
 
-![](https://stats.justsong.cn/api/bilibili/?id=1935917667&theme=dark)
-![](https://stats.justsong.cn/api/bilibili/?id=402733289&theme=dark)
+![](https://stats.justsong.cn/api/bilibili/?id=1935917667&theme=dark)![](https://stats.justsong.cn/api/bilibili/?id=402733289&theme=dark)
 
 <p align="center">
 
