@@ -27,6 +27,7 @@ Here are some ideas to get you started:
 - I'm a big fan of snowmiku！
 - I'm also a fan ofピノキオピー、ナナヲアカリ、寺田てらand老师好我叫何同学！
 - QQ:2892466922
+![](https://github-readme-stats.vercel.app/api?username=David20080125&show_icons=true&theme=dark&count_private=true)
 <p align="center"> 
 | 
 <a href="https://www.zhihu.com/people/b8e59c8be41a29875c2e26dbd5b7c4a7" target="_blank">Zhihu</a> | 
