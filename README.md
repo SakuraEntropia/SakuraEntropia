@@ -31,6 +31,8 @@ Here are some ideas to get you started:
 
 ![](https://github-readme-stats.vercel.app/api?username=David20080125&show_icons=true&theme=dark&count_private=true)
 <p align="center"> 
+![](https://github-readme-stats.vercel.app/api/top-langs/?username=David20080125&theme=dark&layout=compact)
+
 | 
 <a href="https://www.zhihu.com/people/b8e59c8be41a29875c2e26dbd5b7c4a7" target="_blank">Zhihu</a> | 
 <a href="https://space.bilibili.com/1935917667" target="_blank">Bilibili</a> |
