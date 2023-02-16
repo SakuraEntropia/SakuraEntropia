@@ -5,8 +5,8 @@
 
 Here are some ideas to get you started:
 
-- 🔭 I’m currently working on Greendemo Renderer
-- 🌱 I’m currently learning Computer Graphics，quantum computing，artificial intelligence，music，animation，and vocaloid 
+🔭 I’m currently working on Greendemo Renderer
+🌱 I’m currently learning Computer Graphics，quantum computing，artificial intelligence，music，animation，and vocaloid 
 - 👯 I’m looking to collaborate on ...
 - 🤔 I’m looking for help with ...
 - 💬 Ask me about ...
