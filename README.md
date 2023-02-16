@@ -1,7 +1,9 @@
-### Hi there 👋
+### <img src="https://readme-typing-svg.herokuapp.com/?lines=Think different;Computer graphics is awesome！&font=Roboto" />
+
 
 <!--
-**David20080125/David20080125** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**David20080125/David20080125** is a ✨ _special_ ✨ r
+epository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
