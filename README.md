@@ -1,5 +1,6 @@
 ### Hello World！
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
+-->
 - 🔭 I’m currently working on Greendemo Renderer
 - 🌱 I’m currently learning Computer Graphics，quantum computing，artificial intelligence，music，animation，and vocaloid 
 - my plans：
