@@ -24,3 +24,5 @@ Here are some ideas to get you started:
 - Greendemo Linux
 - 复现ChatGPT
 - Taichi Lang（Greendemo Ver）
+- I'm a big fan of snowmiku！
+- I'm also a fan ofピノキオピー、ナナヲアカリ、寺田てらand老师好我叫何同学！
