@@ -2,17 +2,28 @@
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
 -->
 - 🔭 I’m currently working on Greendemo Renderer
+
 - 🌱 I’m currently learning Computer Graphics，quantum computing，artificial intelligence，music，animation，and vocaloid 
+
 - my plans：
 - Greendemo Renderer
+
 - Greendemo Engine（physical，AI）
+
 - PFGMsinger（and a DAW with dolby atmos using dolby.io api）
+
 - Animation 《Verdure》（and vocaloid music 《meta boy》and《entropa》and the whole original motion picture soundtrack、《the art of verdure》）
+
 - Greendemo Linux
+
 - 复现ChatGPT
+
 - Taichi Lang（Greendemo Ver）
+
 - I'm a big fan of snowmiku！
+
 - I'm also a fan ofピノキオピー、ナナヲアカリ、寺田てらand老师好我叫何同学！
+
 - QQ:2892466922
 
 
