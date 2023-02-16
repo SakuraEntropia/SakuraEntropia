@@ -1,5 +1,5 @@
 ### Hello World！
-<img src="https://readme-typing-svg.herokuapp.com/?lines=Think different;Computer graphics is awesome！&font=Roboto" />
+<img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Computer%20graphics%20is%20awesome！&font=Roboto" />
 
 -->
 - 🔭 I’m currently working on Greendemo Renderer
