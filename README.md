@@ -16,7 +16,7 @@
 
 - Greendemo Linux
 
-- 复现ChatGPT
+- Greendemo GPT
 
 - Taichi Lang（Greendemo Ver）
 
