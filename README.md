@@ -6,19 +6,8 @@
 - 🌱 I’m currently learning Computer Graphics，quantum computing，artificial intelligence，music，animation，and vocaloid 
 
 - my plans：
-- Greendemo Renderer
-
-- Greendemo Engine（physical，AI）
-
-- PFGMsinger（and a DAW with dolby atmos using dolby.io api）
-
-- Animation 《Verdure》（and vocaloid music 《meta boy》and《entropa》and the whole original motion picture soundtrack、《the art of verdure》）
-
-- Greendemo Linux
-
-- Greendemo GPT
-
-- Taichi Lang（Greendemo Ver）
+- Greendemo Engine
+- verdurentropia animation
 
 - I'm a big fan of snowmiku！
 
