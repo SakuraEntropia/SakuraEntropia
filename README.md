@@ -9,9 +9,9 @@
 - Greendemo Engine
 - verdurentropia animation
 
-- I'm a big fan of snowmiku！
+- I'm a big fan of miku，murasa and nahita
 
-- I'm also a fan ofピノキオピー、ナナヲアカリ、寺田てらand老师好我叫何同学！
+- 推し:ピノキオピー、ナナヲアカリ、寺田てらand老师好我叫何同学！
 
 - QQ:2892466922
 
