@@ -1,19 +1,24 @@
-Hello World！
+### Hello World！
+
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
--->
--🔭 I’m currently working on a dcc and a spatial audio project called entro-atmos – a physics‑based, DCC‑friendly audio rendering engine.
--🌱 I’m currently learning computer graphics, quantum computing, artificial intelligence, music, animation, and vocaloid.
--My plans:
--Stars Strings-Yori animation
--Spacial Audio
--A vocaloid-like TTS
--Long term: building a DCC (digital content creation) suite around graphics, sound, and storytelling.
--Light Sail
--I’m a big fan of Miku, Nanachi,Nahita and Faputa!
--推し: PinocchioP, Nanawo Akari, TeradaTera, and Tsukushi Akihito.
--QQ: 2892466922
+
+- 🔭 I’m currently working on a **DCC** and a spatial audio project called **`entro-atmos`** – a physics‑based, DCC‑friendly audio rendering engine.
+- 🌱 I’m currently learning **computer graphics**, **quantum computing**, **artificial intelligence**, **music**, **animation**, and **vocaloid**.
+
+My plans:
+
+- **Stars Strings-Yori animation**
+- **Spatial Audio**
+- A **vocaloid-like TTS**
+- Long term: building a **DCC** (digital content creation) suite around graphics, sound, and storytelling.
+- **Light Sail**
+
+- I'm a big fan of **Miku**, **Nanachi**, **Nahita**, and **Faputa**.
+- 推し: **PinocchioP**, **Nanawo Akari**, **TeradaTera**, and **Tsukushi Akihito**.
+- QQ: 2892466922
+
 ![](https://github-readme-stats.vercel.app/api?username=SakuraEntropia&show_icons=true&theme=dark&count_private=true)
- 
+
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=SakuraEntropia&theme=dark&layout=compact)
 
 ![](https://activity-graph.herokuapp.com/graph?username=David20080125&theme=github)
