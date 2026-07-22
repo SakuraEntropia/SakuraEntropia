@@ -14,7 +14,7 @@
 - 🚀 **Light Sail** (Breakthrough Starshot)
 
 ## 🎸 Interests & Culture
-- I'm a big fan of **Miku**, **Nanachi**, **Nahita**, and **Faputa**!
+- I'm a big fan of **Miku**, **Nanachi**, **Nahita**, かぐやとやちよand **Faputa**!
 - 推し: **PinocchioP**, **Nanawo Akari**, **TeradaTera**, and **Tsukushi Akihito**.
 - 📫 QQ: `2892466922`
 
