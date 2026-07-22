@@ -1,5 +1,6 @@
 Hello World！
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
+-->
 -🔭 I’m currently working on a dcc and a spatial audio project called entro-atmos – a physics‑based, DCC‑friendly audio rendering engine.
 -🌱 I’m currently learning computer graphics, quantum computing, artificial intelligence, music, animation, and vocaloid.
 -My plans:
