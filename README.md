@@ -1,15 +1,17 @@
 ### Hello World！
 <img src="https://readme-typing-svg.herokuapp.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
 
-- 🔭 I’m currently working on a **DCC** suite and **`entro-atmos`** – a physics‑based, DCC‑friendly audio rendering engine.
+- 🔭 I’m currently working on a **DCC** suite and **`entro-atmos`** – a physics‑based, **DCC-like** audio rendering engine.
 - 🌱 I’m currently learning **Computer Graphics**, **Quantum Computing**, **AI**, **Music**, **Animation**, and **Vocaloid**.
 
-## 🗺️ My Roadmap
+## 🚀 Roadmap
 - 🎬 **Stars Strings-Yori** (Animation Project)
 - 🎵 **Spatial Audio Engine** (Entro-Atmos)
 - 🗣️ **Vocaloid-like TTS** (Synthesis Engine)
-- 🚀 **Light Sail** (Concept Project)
 - 🏗️ **Long-term**: Building a **Digital Content Creation (DCC)** suite around graphics, sound, and storytelling.
+
+## 🌌 Super Long-term Vision
+- 🚀 **Light Sail** (Breakthrough Starshot)
 
 ## 🎸 Interests & Culture
 - I'm a big fan of **Miku**, **Nanachi**, **Nahita**, and **Faputa**!
@@ -31,5 +33,3 @@
 <a href="mailto:davidqiuhr@outlook.com" target="_blank">Email</a> |
 <a href="https://blog.csdn.net/DavidMEMZ?spm=1000.2115.3001.5343" target="_blank">CSDN</a> |
 </p>
-
-
