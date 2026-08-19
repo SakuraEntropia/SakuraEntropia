@@ -1,5 +1,5 @@
 ### Hello World！
-<img src="https://readme-typing-svg.demolab.com/?lines=Think%20different;Stay%20hungry%20stay%20foolish;Computer%20graphics%20is%20awesome！&font=Roboto" />
+<img src="https://readme-typing-svg.demolab.com/?lines=Think%20different%3BStay%20hungry%20stay%20foolish%3BComputer%20graphics%20is%20awesome%EF%BC%81&font=Roboto" />
 
 Computer graphics enthusiast. I build **graphics-style pipelines for things that aren't images** —
 sound, neural networks, and mathematical proofs — and I ship them as open-source tools.
