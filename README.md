@@ -84,3 +84,41 @@ Small research toys, mostly rendering and physics:
 <a href="mailto:davidqiuhr@outlook.com" target="_blank">Email</a> |
 <a href="https://blog.csdn.net/DavidMEMZ?spm=1000.2115.3001.5343" target="_blank">CSDN</a> |
 </p>
+
+## 📜 Preface: Some Thoughts on Humans and Existing Social Systems
+
+We were once promised a future like this: material abundance, humanity reaching UBI, commuting in eVTOLs, kilometer-scale megastructures, ring-shaped space stations, robots taking care of everything for everyone, all labor handed over to machines, and resources distributed on demand.
+
+Of course, if anyone posts that vision online today, they will only be mocked: "keep dreaming — anything exists in dreams." That is what happens when an ideal runs into productivity and chaotic systems. The modern system is still steered by human emotion.
+
+My definition of a Type I civilization: it can reach any place on this planet, reshape any geography on this planet, travel to and from Mars at will, and cure almost all diseases.
+
+As for the definition of an "ordinary person" — that is a very fuzzy thing. Any person in any field can be called ordinary: Musk is undoubtedly one of the world's best in business, but he may know nothing about sports. Let me give a concrete definition: a non-outstanding employee at an ordinary company, earning around the average income, who must keep selling their labor to survive, follows the fixed life path of marriage, children, and retirement, and has no thought of self-realization such as starting a business.
+
+But the word "ordinary person" has now become something close to a "Dalit" online — a status an individual basically cannot escape in their lifetime. I admit that in the current economic downturn, most people will suffer lost opportunities and debt servitude, and will live out their lives step by step along the fixed path.
+
+The distribution of resources in our society is extremely imbalanced — though there is little we can do about it.
+
+But perhaps there are more "non-ordinary" people than we imagine. Climbing Everest requires very strict permits, enormous costs, and many failed attempts — yet the number of people who have stood on the summit still exceeds 11,000. Athletes, directors, game producers, esports players, stars, singers, entrepreneurs, mathematicians, politicians, physicists, other scientists, musicians, painters, artists... counted together, they form a huge number.
+
+If you define "world first" in a narrow enough way, being world first is not that hard. For example, define "the world's first person to do tensor computation with an audio equalizer," or "the world's first person to train JEPA in Minecraft" — then you just go and do it.
+
+As of 2026, humanity is still under capitalism. This is not about good people versus bad people — it is about distribution, and the distribution is skewed by design. Most people own no means of production, so they must sell their labor power to survive, and the wage they receive covers only the reproduction of that labor: housing, transport, food. That is exactly why those costs swallow most of a person's income. Nobody needs to plot against you — the system only needs you to keep working, not to excel. The surplus your labor creates is accumulated as capital and concentrated in fewer and fewer hands, and that concentrated capital decides what gets funded and who gets the material conditions to pursue excellence. A single breakthrough costs millions — nearly a lifetime's income for an ordinary person — so for most people the door is shut before they ever reach it. Entrepreneurs aren't the villains; they are the ones holding the accumulated surplus, operating inside the same structure. But the structure itself is not innocent: it turns society's surplus into a gate that only a few get to pass. I'm not here to blame individuals. I'm saying that as long as the social surplus flows through capital accumulation, what most people can become is decided by how that surplus is distributed — and right now, that distribution mocks effort.
+
+Why, then, don't more people try to start something, or to become excellent? First, their economic conditions may simply not allow it. Second, the risk is too high. Third, they are shaped by the social environment around them. Fourth, their own ability may not yet have crossed the threshold. These aren't excuses — they are the actual mechanics.
+
+Then there is the social refrain of "don't get above yourself" (不要自命不凡). It is true that an innovation you attempt will most likely fail. But someone has to try. Many people believe they are the exception, when in reality most of them will be the vast majority who fail. I'm not saying they are incapable — most likely they were simply not that lucky, though ability and method matter too. And "ability" itself is a vague thing: maybe it is a matter of neural patterns, maybe it is a matter of acquired method. The failure rate is real — so is the need for people to keep trying.
+
+And there is the tension between individual will and objective statistics. Sometimes, to do something at all, you have no choice but to run on a placebo effect — because the cruelty of reality can scare you out of doing it. Self-belief beyond the statistics is what lets you move. But the placebo effect must not be allowed to blind you to the risk.
+
+Nor am I arguing that any single alternative would save us. The other -isms beyond capitalism have problems of their own. None of today's systems is the final answer; perhaps these problems will only be solved by future advances in social science and technology.
+
+Of course, we have already progressed enormously. The Eurasian Pole of Inaccessibility was once a place that defeated the ancients, but we have built Tianshan International Airport nearby — a 4F-class airport. Shenzhen was once overrun with cockroaches; no one in ancient times could have predicted that it would become a technology capital.
+
+To be an outstanding civilization, we need at least an elevator up Everest, and the ability to take everyone to Lop Nur, the Amazon — anywhere. Anyone should be able to reach Mars smoothly. Musk and entrepreneurs like him are pushing in this direction, but they also face many difficulties imposed by the existing system.
+
+On the question of "worldly wisdom" (人情世故). It is actually built on human nature. Over long evolution, humans evolved emotional needs to cope with survival — because of Dunbar's number, our emotional bandwidth is limited to a small circle, so societies end up running on trust, status, and ritual rather than pure reason. 人情世故 is exactly that: an operating system built on top of human nature.
+
+There is actually no one who truly changes the world by the strength of one person alone. Civilization is built by many like-minded people. Those entrepreneurs may claim to be "changing the world," but Musk's plans were actually proposed by many people before him — and if you really want to be pedantic, even Einstein's ideas stood on the shoulders of countless predecessors.
+
+As Liu Cixin said, all soaring thoughts will come crashing down under the gravity of reality. I don't read that line as surrender. It is an interface problem: between the ideal and reality there is an interface, and it must be optimized and reconciled, over and over — hold onto the ideal, respect the reality. Humanity may be sitting on the Great Filter, but the bugs have never been wiped out — perhaps a black swan event will lead humanity step by step out of the swamp.
