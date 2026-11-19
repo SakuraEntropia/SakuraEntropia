@@ -53,7 +53,7 @@ const BLOG_POSTS = [
         <span class="chev">▾</span>
       </button>
       <div class="card-preview">
-        <div class="card-inner"><div class="loading"><div class="spinner"></div></div></div>
+        <div class="card-inner prose"><div class="loading"><div class="spinner"></div></div></div>
         <div class="fade"></div>
         <button class="expand-btn">展开全文 ▾</button>
       </div>
