@@ -9,73 +9,67 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body data-theme="dark">
+<body>
 
-  <header class="header">
-    <nav class="nav">
-      <a class="logo" href="#" onclick="switchTab('blog'); return false;">
-        <img class="header-avatar" src="avatar.jpg" alt="SakuraEntropia">
-        <span class="header-title">SakuraEntropia-祝人类的未来充满诅咒和祝福</span>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#" onclick="switchTab('blog'); return false;">
+        <img class="brand-avatar" src="avatar.jpg" alt="SakuraEntropia">
+        <span class="brand-title">SakuraEntropia-祝人类的未来充满诅咒和祝福</span>
       </a>
-
-      <div class="nav-tabs">
-        <button class="tab active" data-tab="blog" onclick="switchTab('blog')">文章</button>
-        <button class="tab" data-tab="model" onclick="switchTab('model')">Model</button>
-        <button class="tab" data-tab="wager" onclick="switchTab('wager')">Wager</button>
-        <button class="tab" data-tab="projects" onclick="switchTab('projects')">Projects</button>
-      </div>
-
       <div class="nav-actions">
         <button id="theme-btn" class="icon-btn" title="切换主题">
-          <svg id="ico-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-          <svg id="ico-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg id="ico-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg id="ico-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         </button>
         <a href="https://github.com/SakuraEntropia/SakuraEntropia" target="_blank" rel="noopener" class="icon-btn" title="GitHub">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         </a>
       </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="blog">文章</button>
+      <button class="tab-btn" data-tab="model">Model</button>
+      <button class="tab-btn" data-tab="wager">Wager</button>
+      <button class="tab-btn" data-tab="projects">Projects</button>
     </nav>
   </header>
 
-  <main class="wrap">
-
-    <!-- ── TAB: BLOG ── -->
-    <section id="tab-blog" class="tab active">
-      <div class="layout">
-        <div class="posts-wrap">
-          <h2 class="posts-h">全部文章</h2>
-          <div id="post-list"></div>
-        </div>
-        <aside id="sidebar" class="toc-side">
+  <main>
+    <!-- Blog -->
+    <section id="tab-blog" class="tab-panel active">
+      <div class="blog-layout">
+        <div id="post-list"></div>
+        <aside class="toc" id="toc">
           <div class="toc-head">目录</div>
-          <div id="toc-title" class="toc-article"></div>
-          <nav id="toc-nav"></nav>
+          <div class="toc-article" id="toc-article"></div>
+          <div class="toc-nav" id="toc-nav">
+            <p class="toc-hint">展开一篇文章后，这里显示它的目录。</p>
+          </div>
         </aside>
       </div>
     </section>
 
-    <!-- ── TAB: MODEL ── -->
-    <section id="tab-model" class="tab">
-      <div class="page-hero">
+    <!-- Model -->
+    <section id="tab-model" class="tab-panel">
+      <div class="hero">
         <p class="hero-eyebrow">Section 20 — Interactive Simulation</p>
         <h2>The Gradient-Driven Expectation Field</h2>
-        <p class="hero-sub">When does accelerating progress tip into collective disillusionment?</p>
+        <p>When does accelerating progress tip into collective disillusionment?</p>
       </div>
 
       <div class="model-layout">
         <div class="canvas-card">
           <div class="canvas-top">
-            <div class="canvas-legend">
-              <span class="dot cyan"></span><span>Real Progress \(R(s)\)</span>
-              <span class="dot pink"></span><span>Expectation \(E(s)\)</span>
-              <span class="dot yellow"></span><span>Threshold \(s^*\)</span>
+            <div class="legend">
+              <span><i class="dot cyan"></i>Real Progress \(R(s)\)</span>
+              <span><i class="dot pink"></i>Expectation \(E(s)\)</span>
+              <span><i class="dot yellow"></i>Threshold \(s^*\)</span>
             </div>
           </div>
-          <div class="canvas-wrap">
-            <canvas id="modelCanvas"></canvas>
-          </div>
+          <div class="canvas-wrap"><canvas id="modelCanvas"></canvas></div>
           <div id="status-card" class="status-card">
-            <span id="status-icon" class="status-ico">🚀</span>
+            <span id="status-icon">🚀</span>
             <div>
               <div id="status-title" class="status-t">Accumulation Phase</div>
               <div id="status-desc" class="status-d">Gradient is positive — expectations still rising.</div>
@@ -97,14 +91,12 @@
             <div class="ctrl-row"><label>Potential Scale \(R_{\max}\)</label><span id="val-rmax" class="mono">500</span></div>
             <input type="range" id="slider-rmax" min="100" max="1000" step="50" value="500">
           </div>
-
           <div class="math-block">
             <div class="math-label">Governing equations</div>
             \[ R(s) = R_{\max} \cdot s^\beta \]
             \[ E(s) = \tfrac{R_{\max}}{\beta+1}\,s^\beta\!\left(1 - s^{\beta+1}\right) \]
             \[ s^* = \!\left(\tfrac{\beta}{2\beta+1}\right)^{\!\frac{1}{\beta+1}} \]
           </div>
-
           <div class="diag-grid">
             <div class="diag"><span>Peak \(s^*\)</span><span id="out-s-star" class="mono">0.333</span></div>
             <div class="diag"><span>\(R(s)\)</span><span id="out-r-val" class="mono">225.0</span></div>
@@ -119,12 +111,12 @@
       </div>
     </section>
 
-    <!-- ── TAB: WAGER ── -->
-    <section id="tab-wager" class="tab">
-      <div class="page-hero">
+    <!-- Wager -->
+    <section id="tab-wager" class="tab-panel">
+      <div class="hero">
         <p class="hero-eyebrow">Section 15 — Decision Theory</p>
         <h2>A Wager on God</h2>
-        <p class="hero-sub">Can belief in God provide positive secular utility even if God does not exist?</p>
+        <p>Can belief in God provide positive secular utility even if God does not exist?</p>
       </div>
 
       <div class="matrix-wrap">
@@ -169,14 +161,8 @@
             </div>
           </div>
           <div class="sim-results">
-            <div class="result">
-              <span class="res-label">\(EU(B) = p\,U_{BG} + (1-p)\,U_{BN}\)</span>
-              <span id="out-eub" class="res-num">46.0</span>
-            </div>
-            <div class="result">
-              <span class="res-label">\(EU(N) = p\,U_{NG} + (1-p)\,U_{NN}\)</span>
-              <span id="out-eun" class="res-num">28.5</span>
-            </div>
+            <div class="result"><span>\(EU(B) = p\,U_{BG} + (1-p)\,U_{BN}\)</span><span id="out-eub" class="res-num">46.0</span></div>
+            <div class="result"><span>\(EU(N) = p\,U_{NG} + (1-p)\,U_{NN}\)</span><span id="out-eun" class="res-num">28.5</span></div>
             <div id="verdict" class="verdict">Belief yields higher expected utility under current parameters.</div>
           </div>
         </div>
@@ -187,14 +173,14 @@
       </div>
     </section>
 
-    <!-- ── TAB: PROJECTS ── -->
-    <section id="tab-projects" class="tab">
-      <div class="page-hero profile-hero">
+    <!-- Projects -->
+    <section id="tab-projects" class="tab-panel">
+      <div class="profile-hero">
         <img src="avatar.jpg" alt="SakuraEntropia" class="profile-avatar">
         <div>
           <p class="hero-eyebrow">SakuraEntropia</p>
           <h2>Building graphics-style pipelines<br>for things that aren't images.</h2>
-          <p class="hero-sub">Sound · Neural networks · Mathematical proofs</p>
+          <p>Sound · Neural networks · Mathematical proofs</p>
           <div class="social-row">
             <a href="https://github.com/SakuraEntropia" target="_blank">GitHub</a>
             <a href="https://space.bilibili.com/1935917667" target="_blank">Bilibili</a>
@@ -207,52 +193,35 @@
 
       <div class="proj-grid">
         <a class="proj-card" href="https://github.com/SakuraEntropia/Entropia-Atmos" target="_blank">
-          <div class="proj-top">
-            <span class="proj-name">Entropia-Atmos</span>
-            <span class="proj-arrow">↗</span>
-          </div>
+          <div class="proj-top"><span class="proj-name">Entropia-Atmos</span><span class="proj-arrow">↗</span></div>
           <p>"Blender for spatial audio." AudioGS sound fields, Audio-USD, acoustic ray tracing, Acoustic-BRDF, HRTF binaural rendering, DSP graph.</p>
           <div class="proj-tags"><span>TypeScript</span><span>AudioGS</span><span>USD</span></div>
         </a>
-
         <a class="proj-card" href="https://github.com/SakuraEntropia/Entropia-Riko" target="_blank">
-          <div class="proj-top">
-            <span class="proj-name">Entropia-Riko</span>
-            <span class="proj-arrow">↗</span>
-          </div>
+          <div class="proj-top"><span class="proj-name">Entropia-Riko</span><span class="proj-arrow">↗</span></div>
           <p>ComfyUI-style node-graph deep learning editor for PyTorch. ~200 built-in nodes, live training curves, code export. Available on PyPI.</p>
           <div class="proj-tags"><span>Python</span><span>FastAPI</span><span>React</span></div>
         </a>
-
         <a class="proj-card" href="https://github.com/SakuraEntropia/Entropia-Template-UI" target="_blank">
-          <div class="proj-top">
-            <span class="proj-name">Entropia-Template-UI</span>
-            <span class="proj-arrow">↗</span>
-          </div>
+          <div class="proj-top"><span class="proj-name">Entropia-Template-UI</span><span class="proj-arrow">↗</span></div>
           <p>Reusable node-graph editor shell: React Flow + Zustand, splittable panels, Apple Liquid Glass theme. Published on npm.</p>
           <div class="proj-tags"><span>React</span><span>Vite</span><span>TypeScript</span></div>
         </a>
-
         <a class="proj-card" href="https://github.com/SakuraEntropia/Erdos-test" target="_blank">
-          <div class="proj-top">
-            <span class="proj-name">Erdos-test</span>
-            <span class="proj-arrow">↗</span>
-          </div>
+          <div class="proj-top"><span class="proj-name">Erdos-test</span><span class="proj-arrow">↗</span></div>
           <p><code>sorry</code>-free Lean 4 + Mathlib formalisation of the elementary layer around the Erdős–Straus conjecture. Every claim is register-tagged.</p>
           <div class="proj-tags"><span>Lean 4</span><span>Mathlib</span></div>
         </a>
       </div>
     </section>
-
   </main>
 
   <button id="back-top" title="Back to top">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
   </button>
 
   <footer class="footer">
     <div class="footer-inner">
-      <span class="logo-mark small">ΔS</span>
       <span>SakuraEntropia · <em>A Living Essay</em> · Nov 2026</span>
       <div class="footer-links">
         <a href="https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropia/main/ESSAY.md" target="_blank">ESSAY.md</a>
@@ -267,6 +236,6 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="js/data-zh.js"></script>
   <script src="js/interactive-model.js"></script>
-  <script src="js/blog.js"></script>
+  <script src="js/posts.js"></script>
 </body>
 </html>
