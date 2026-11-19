@@ -58,6 +58,7 @@ function toggleLanguage() {
   localStorage.setItem('sakura_lang', lang);
   document.getElementById('lang-btn').textContent = lang === 'en' ? 'EN / 中' : '中 / EN';
   renderEssay();
+  document.dispatchEvent(new CustomEvent('langchange'));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 window.toggleLanguage = toggleLanguage;
@@ -121,13 +122,13 @@ function updateHero(l) {
     const s = document.getElementById('essay-sub');
     if (t) t.textContent = 'Preface: Some Thoughts on Humans and Existing Social Systems';
     if (s) s.textContent = 'On the distribution of historical agency, the cost of mediocrity, and the mechanics of persistence.';
-    document.title = 'ΔS — SakuraEntropia';
+    document.title = 'SakuraEntropia-祝人类文明的未来充满诅咒和祝福';
   } else {
     const t = document.getElementById('essay-title');
     const s = document.getElementById('essay-sub');
     if (t) t.textContent = '序言：关于人类和现有社会系统的一些思考';
     if (s) s.textContent = '关于历史能动性的分布、平庸的代价与在智能时代坚持的机制。';
-    document.title = 'ΔS — SakuraEntropia（中文版）';
+    document.title = 'SakuraEntropia-祝人类文明的未来充满诅咒和祝福';
   }
   const btn = document.querySelector('.cta-primary');
   if (btn) btn.textContent = l === 'en' ? '切换中文' : 'Switch to English';

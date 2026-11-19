@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ΔS — SakuraEntropia</title>
+  <title>SakuraEntropia-祝人类文明的未来充满诅咒和祝福</title>
   <meta name="description" content="A living essay on the distribution of historical agency, the cost of mediocrity, and the mechanics of persistence in the age of intelligence.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='serif'>ΔS</text></svg>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -27,7 +27,6 @@
         <button class="tab" data-tab="model" onclick="switchTab('model')">Model</button>
         <button class="tab" data-tab="wager" onclick="switchTab('wager')">Wager</button>
         <button class="tab" data-tab="projects" onclick="switchTab('projects')">Projects</button>
-        <a class="tab" href="posts/">Blog</a>
       </div>
 
       <div class="nav-actions">
@@ -99,10 +98,11 @@
           </div>
         </div>
 
-        <!-- Article -->
-        <article id="article" class="prose">
-          <div class="loading"><div class="spinner"></div></div>
-        </article>
+        <!-- All articles as foldable cards (preface first, then posts) -->
+        <div class="posts-wrap">
+          <h2 class="posts-h">文章</h2>
+          <div id="post-list"></div>
+        </div>
       </section>
 
       <!-- ── TAB: MODEL ── -->
@@ -323,5 +323,6 @@
   <script src="js/data-zh.js"></script>
   <script src="js/interactive-model.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/posts2.js"></script>
 </body>
 </html>
