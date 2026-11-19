@@ -88,12 +88,14 @@ const BLOG_POSTS = [
     pv.classList.toggle('open', open);
     card.querySelector('.chev').textContent = open ? '▴' : '▾';
     card.querySelector('.expand-btn').textContent = open ? '收起 ▴' : '展开全文 ▾';
-    if (!open) return;
+    if (!open) { if (lastOpen === id) { lastOpen = null; clearTOC(); } return; }
+    lastOpen = id;
     const inner = card.querySelector('.card-inner');
     loadContent(id).then(html => {
       if (html === null) { inner.innerHTML = '<p class="err">加载失败，请稍后再试。</p>'; return; }
       if (html === undefined) return; // preface: app handled elsewhere? never — always html
       inner.innerHTML = html;
+      if (lastOpen === id) buildTOC(id);
       if (window.renderMathInElement) {
         renderMathInElement(inner, {
           delimiters: [
@@ -107,9 +109,44 @@ const BLOG_POSTS = [
     });
   }
 
+
+  let lastOpen = null;
+
+  function buildTOC(id) {
+    const nav = document.getElementById('toc-nav');
+    const ttitle = document.getElementById('toc-title');
+    if (!nav) return;
+    const card = document.getElementById('card-' + id);
+    const inner = card.querySelector('.card-inner');
+    const hs = Array.from(inner.querySelectorAll('h1, h2, h3'));
+    ttitle.textContent = card.querySelector('.card-title').textContent;
+    if (!hs.length) { nav.innerHTML = '<p class="toc-hint">本文无小节标题</p>'; return; }
+    let h1c = 0, h2c = 0, h3c = 0;
+    nav.innerHTML = hs.map(h => {
+      const lvl = h.tagName.toLowerCase();
+      if (lvl === 'h1') { h1c++; h.id = h.id || ('s' + h1c); }
+      if (lvl === 'h2') { h2c++; h.id = h.id || ('s' + h1c + '-' + h2c); }
+      if (lvl === 'h3') { h3c++; h.id = h.id || ('s' + h1c + '-' + h2c + '-' + h3c); }
+      const label = h.textContent.trim().slice(0, 40);
+      return `<a class="toc-link toc-${lvl}" href="#${h.id}">${label.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</a>`;
+    }).join('');
+    nav.querySelectorAll('.toc-link').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(a.getAttribute('href').slice(1));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
+  }
+
+  function clearTOC() {
+    const nav = document.getElementById('toc-nav');
+    const ttitle = document.getElementById('toc-title');
+    if (nav) nav.innerHTML = '<p class="toc-hint">展开一篇文章后，这里显示它的目录。</p>';
+    if (ttitle) ttitle.textContent = '';
+  }
   document.addEventListener('DOMContentLoaded', () => {
     applyTheme(theme);
     renderList();
+    clearTOC();
 
     document.getElementById('theme-btn')?.addEventListener('click', () => {
       theme = theme === 'dark' ? 'light' : 'dark';

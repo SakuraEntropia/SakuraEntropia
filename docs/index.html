@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SakuraEntropia-祝人类文明的未来充满诅咒和祝福</title>
+  <title>SakuraEntropia-祝人类的未来充满诅咒和祝福</title>
   <meta name="description" content="SakuraEntropia 博客：序言与随笔，全部文章折叠陈列。">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='serif'>ΔS</text></svg>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
@@ -14,8 +14,8 @@
   <header class="header">
     <nav class="nav">
       <a class="logo" href="#" onclick="switchTab('blog'); return false;">
-        <span class="logo-mark">ΔS</span>
-        <span class="logo-name">SakuraEntropia</span>
+        <img class="header-avatar" src="avatar.jpg" alt="SakuraEntropia">
+        <span class="header-title">SakuraEntropia-祝人类的未来充满诅咒和祝福</span>
       </a>
 
       <div class="nav-tabs">
@@ -41,9 +41,16 @@
 
     <!-- ── TAB: BLOG ── -->
     <section id="tab-blog" class="tab active">
-      <div class="posts-wrap">
-        <h2 class="posts-h">全部文章</h2>
-        <div id="post-list"></div>
+      <div class="layout">
+        <div class="posts-wrap">
+          <h2 class="posts-h">全部文章</h2>
+          <div id="post-list"></div>
+        </div>
+        <aside id="sidebar" class="toc-side">
+          <div class="toc-head">目录</div>
+          <div id="toc-title" class="toc-article"></div>
+          <nav id="toc-nav"></nav>
+        </aside>
       </div>
     </section>
 

@@ -659,3 +659,32 @@ input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 .card-inner th, .card-inner td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
 .card-inner .err { color: var(--fg-muted); }
 @media (max-width: 640px) { .card-inner { padding: 16px 14px; } }
+
+/* ── Top bar avatar + title ── */
+.header-avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+.header-title { font-size: .92rem; font-weight: 600; color: var(--fg); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Blog layout with TOC sidebar ── */
+.tab.active .layout { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 40px; align-items: start; max-width: 1180px; margin: 0 auto; padding: 0; width: 100%; }
+.toc-side { position: sticky; top: 84px; max-height: calc(100vh - 110px); overflow-y: auto; border-left: 1px solid var(--border); padding-left: 20px; }
+.toc-head { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--fg-muted); margin-bottom: 8px; }
+.toc-article { font-size: .82rem; font-weight: 600; color: var(--fg); margin-bottom: 10px; line-height: 1.4; }
+.toc-nav, #toc-nav { display: flex; flex-direction: column; gap: 2px; }
+.toc-link { font-size: .82rem; color: var(--fg-muted); text-decoration: none; padding: 4px 8px; border-radius: 6px; line-height: 1.35; }
+.toc-link:hover { color: var(--fg); background: rgba(255,255,255,.05); }
+[data-theme="light"] .toc-link:hover { background: rgba(0,0,0,.05); }
+.toc-h1 { font-weight: 600; color: var(--fg); }
+.toc-h2 { padding-left: 14px; }
+.toc-h3 { padding-left: 28px; font-size: .76rem; }
+.toc-hint { font-size: .8rem; color: var(--fg-muted); line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .tab.active .layout { grid-template-columns: 1fr; }
+  .toc-side { display: none; }
+}
+
+/* ── Global wrap ── */
+.wrap { width: 1180px; max-width: 100%; margin: 0 auto; padding: 32px 28px 90px; }
+.page-hero { max-width: 860px; }
+@media (max-width: 860px) { .wrap { padding: 20px 16px 70px; } .header-title { font-size: .82rem; max-width: 46vw; } }
+.tab.active .layout > .posts-wrap { width: 100%; max-width: 860px; justify-self: center; }
