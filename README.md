@@ -89,6 +89,11 @@ Small research toys, mostly rendering and physics:
 
 *A living essay. First published August 2026. Last updated November 19, 2026.*
 
+> 🌸 **Interactive Blog & Standalone Editions**:
+> - 🌐 **Interactive Blog & Expectation Model**: [sakuraentropia.github.io/SakuraEntropia](https://sakuraentropia.github.io/SakuraEntropia/)
+> - 📖 **Standalone English Essay**: [ESSAY.md](ESSAY.md)
+> - 📜 **完整中文随笔**: [README-zh.md](README-zh.md)
+
 ## The promised future
 
 We were once promised a future of uncompromised abundance: humanity reaching UBI, commuting in eVTOLs, kilometer-scale megastructures, ring-shaped space stations, autonomous robots running household logistics, all grueling physical toil offloaded to machinery, and resources allocated directly on demand.
@@ -220,6 +225,70 @@ Returning to Hegel requires precision. Self-consciousness is permanently entangl
 I have surrendered nothing. I still burn to forge work of historical weight; I still refuse to spend my life as an interchangeable cog; I still intend to break ground across serious research, engineering, and art; and I will still be shaken by minds possessing raw gifts I will never touch. The open challenge I keep before me is this: can one hunt greatness with ruthless aggression without making greatness the prerequisite for one's right to live? I don't have a neat formula, and I despise cheap platitudes — "everyone is special," "just love yourself." The line I hold is uncompromising: I will chase the extraordinary with everything I have, but the ultimate worth of my life will not be judged by whether I catch it.
 
 That tension must remain raw and unsoftened — caught between the obsession to carve a name into the timeline and the freezing awareness of the odds. The vast majority of people will never be outliers. Realism can preserve your life, and realism can pave your tomb; idealism built civilizations, and ungrounded idealism manufactures psychosis. Often, simply to bring an impossible project into being, you have no choice but to run on a controlled placebo effect — because the brutal mechanics of reality will terrify you into paralysis before you take a step. Audacity beyond the regression line gives you the velocity to move, but it must never blind you to the cliff. Respect reality. Just don't worship it.
+
+## A Wager on God
+
+Studying historical databases shows that monumental achievement rarely hinges on intellect alone; it is bound to contingency — birth epoch, institutions, technological inflection points, and luck. Some with terrifying gifts are stranded in unfavorable eras; others catch a nascent wave and ride it into textbooks.
+
+Tracing that boundary between individual will and structural contingency softened my skepticism: *perhaps there is something beyond the observable world that establishes its rules and witnesses what happens within them.*
+
+I claim no scientific evidence for God, nor do I believe any specific religion holds an uncorrupted cosmic manual. My stance is philosophical: a transcendent reality cannot be ruled out, and deserves examination as an open metaphysical possibility.
+
+By "God," I do not mean an anthropomorphic deity intervening on whim, performing miracles, or dispensing prizes and punishment. I consider an abstract ground: a higher intelligence establishing cosmic laws and witnessing reality without breaching physical regularities. Wars, poverty, technological revolutions, personal failures, and contingency unfold naturally — an open metaphysical possibility, not verified cosmology.
+
+This invites Blaise Pascal’s inquiry ([SEP, *Pascal’s Wager*](https://plato.stanford.edu/entries/pascal-wager/); [SEP, *Pragmatic Arguments and Belief in God*](https://plato.stanford.edu/entries/pragmatic-belief-god/)). Pascal evaluated belief under uncertainty through expected utility. Departing from infinite heavenly payoffs, I ask: *Even if God does not exist, can believing in God provide positive real-world utility to an individual?*
+
+Consider the decision problem across two choices and two states of reality:
+
+| Choice / Reality | God exists | God does not exist |
+|---|---|---|
+| I believe in God | Case I: Belief in a world with God | Case II: Belief in a world without God |
+| I do not believe in God | Case III: Disbelief in a world with God | Case IV: Disbelief in a world without God |
+
+In **Case I** (Belief when God exists), conviction aligns with metaphysical reality, framing cosmic order. Yet in a non-interventionist model, one cannot assume supernatural patronage or immortality; faith grants no exemption from physical laws.
+
+**Case II** (Belief when God does not exist) is central: even in an empty universe, faith yields concrete secular utility. It resists despair over contingency, frames life against a grander horizon, and provides psychological order during crises, career setbacks, or cognitive limits. It inspires reflection on morality, responsibility, creation, and freedom, opens theological philosophy, and sustains hope when probabilities offer none. These benefits require no supernatural reality, though belief carries costs: cognitive bias, expended resources, or escapism. Net utility depends on balancing grounding against critical clarity.
+
+In **Case III** (Disbelief when God exists), one holds an erroneous metaphysical view. Yet a non-interventionist creator would hardly demand tribal allegiance or punish honest skepticism, valuing authentic creation, moral integrity, and intellectual honesty above religious badges.
+
+In **Case IV** (Disbelief when God does not exist), intellect aligns with a godless universe. Secular humanism, science, and art provide profound structures for meaning, ethics, and resilience. Disbelief is neither an ethical failure nor an existential handicap.
+
+Case II is thus no automatic loss; faith can generate real philosophical and psychological value even without a divine listener.
+
+Formalizing this decision baseline, let:
+- \(p\): subjective probability assigned to God's existence.
+- \(U_{BG}\): utility of belief when God exists.
+- \(U_{BN}\): utility of belief when God does not exist.
+- \(U_{NG}\): utility of disbelief when God exists.
+- \(U_{NN}\): utility of disbelief when God does not exist.
+
+The expected utilities are:
+
+\[
+EU(B)=pU_{BG}+(1-p)U_{BN}
+\]
+
+\[
+EU(N)=pU_{NG}+(1-p)U_{NN}
+\]
+
+Under my personal values, where existential grounding outweighs friction without dogma, \(EU(B)>EU(N)\) can hold. Yet this is a pragmatic assessment, not a universal theorem: \(p > 0\) does not automatically mandate belief, nor assume divine rewards or punishments. Crucially: *the rationality of a belief as a practical choice is not the same as the truth of that belief.* Practical rationality evaluates utility; epistemic rationality demands truth. Practical utility proves nothing about ontology.
+
+This reflection was sharpened by peers. In mathematics, physics, and engineering, I work alongside formidable technical minds who are practicing theists. Their existence dismantled the assumption that scientific sophistication precludes metaphysical conviction. Their faith does not prove God exists, nor represents the scientific community. It demonstrates that *scientific sophistication and metaphysical belief are not necessarily mutually exclusive.* One can demand empirical falsifiability in research while remaining open to unresolved metaphysical questions.
+
+We cannot determine that God does not exist. Conceived as a transcendent ground of reality rather than an anomaly within it, empirical science lacks instruments for decisive disproof. Yet epistemic integrity requires an immediate boundary: *the absence of a proof of nonexistence is not evidence of existence.* Lack of disproof does not imply high probability. My stance remains a disciplined openness: acknowledging metaphysical possibilities while demanding strict scientific methodology in the physical world.
+
+Even if God is a human construct, theology remains a vital resource for interrogating first principles ([SEP, *Philosophy of Religion*](https://plato.stanford.edu/entries/philosophy-religion/); [SEP, *Existentialism*](https://plato.stanford.edu/entries/existentialism/)):
+- *Why is there something rather than nothing?*
+- *Why does the universe have laws?*
+- *What is consciousness?*
+- *What makes a human life valuable?*
+- *Why does suffering exist?*
+- *Is morality discovered or constructed?*
+
+These inquiries belong equally to metaphysics, epistemology, ethics, and philosophy of science. Theology does not provide scientific axioms, but it re-centers the question underlying technology, capital, and automation: *what is a human being ultimately for?*
+
+This returns to existential anxiety. Confronting historical odds, cognitive ceilings, and technological displacement, faith offers no tactical rescue, intellectual shortcut, or economic shield. What it provides is willingness to confront an open question: even if I never secure the historical legacy I pursue, can a human life hold meaning beyond rankings, social validation, or religious labels? I leave that question open.
 
 ## Any system should be judged on one scale
 
@@ -383,7 +452,7 @@ Respect reality, but don't worship it. Reality should draw the tactical paramete
 
 ## Changelog
 
-- **2026-11-19** — Language polish (cleared artificial phrasing, defensive disclaimers, and rigid transitions while strictly preserving all facts, structure, and tone); added "A Generation Caught in a Non-War Catastrophe" and "The Fear of Supporting Humanity"; added the Yann LeCun passage on talent, luck and historical achievement; added the Anthropic two-degrees personal passage; added "The Gradient-Driven Expectation Field" model section; added the Lacan and Hegel passage on identification and recognition; split the essay into chapters; added references and a data cut-off note.
+- **2026-11-19** — Language polish (cleared artificial phrasing, defensive disclaimers, and rigid transitions while strictly preserving all facts, structure, and tone); added "A Wager on God" on Pascal's wager, expected utility, and first principles; added "A Generation Caught in a Non-War Catastrophe" and "The Fear of Supporting Humanity"; added the Yann LeCun passage on talent, luck and historical achievement; added the Anthropic two-degrees personal passage; added "The Gradient-Driven Expectation Field" model section; added the Lacan and Hegel passage on identification and recognition; split the essay into chapters; added references and a data cut-off note.
 - **2026-11** — Added the historical-figures research (Pantheon 1.0/2.0, Laouenan et al. 2022) and the personal estimate of roughly 200,000–250,000 consequential contributors in human history.
 - **2026-08** — First version.
 
@@ -403,7 +472,7 @@ Note: company valuations, revenues and wealth figures are as reported on or befo
 
 ## Verification Notes
 
-- SEP entries retrieved and consulted in this pass: [*Hannah Arendt*](https://plato.stanford.edu/entries/arendt/), [*Max Weber*](https://plato.stanford.edu/entries/weber/), [*Albert Camus*](https://plato.stanford.edu/entries/camus/), [*Moral Luck*](https://plato.stanford.edu/entries/moral-luck/), [*Philosophy of Technology*](https://plato.stanford.edu/entries/technology/), [*Recognition*](https://plato.stanford.edu/entries/recognition/). The Lacan quotation follows the standard English translation of *Écrits* and is cited to the 1946 Bonneval presentation ([LacanianWorks](https://lacanianworks.org/presentation-on-psychical-causality-28th-september-1946-bonneval-hospital-paris)).
-- Not retrieved in this pass: [*Existentialism*](https://plato.stanford.edu/entries/existentialism/) and [*Distributive Justice*](https://plato.stanford.edu/entries/justice-distributive/); checks touching those areas rely on distinctions stated in the text, not on a live reading of those entries.
+- SEP entries retrieved and consulted in this pass: [*Hannah Arendt*](https://plato.stanford.edu/entries/arendt/), [*Max Weber*](https://plato.stanford.edu/entries/weber/), [*Albert Camus*](https://plato.stanford.edu/entries/camus/), [*Moral Luck*](https://plato.stanford.edu/entries/moral-luck/), [*Philosophy of Technology*](https://plato.stanford.edu/entries/technology/), [*Recognition*](https://plato.stanford.edu/entries/recognition/), [*Pascal’s Wager*](https://plato.stanford.edu/entries/pascal-wager/), [*Pragmatic Arguments and Belief in God*](https://plato.stanford.edu/entries/pragmatic-belief-god/), [*Philosophy of Religion*](https://plato.stanford.edu/entries/philosophy-religion/), [*Existentialism*](https://plato.stanford.edu/entries/existentialism/). The Lacan quotation follows the standard English translation of *Écrits* and is cited to the 1946 Bonneval presentation ([LacanianWorks](https://lacanianworks.org/presentation-on-psychical-causality-28th-september-1946-bonneval-hospital-paris)).
+- Not retrieved in this pass: [*Distributive Justice*](https://plato.stanford.edu/entries/justice-distributive/); checks touching that area rely on distinctions stated in the text, not on a live reading of that entry.
 - Minimal corrections applied: Arendt's threefold vita activa (labor, work, action) restored; Weber credited only for the instrumental/value distinction while the three-layer scheme is marked as the author's own; the Camus sentence now reads as revolt without the illusion of victory; freedom is clarified as autonomy; descriptive, causal and normative claims are flagged as separate.
 - Left unchanged on purpose: the essay's "luck" is ordinary fortune, not the technical notion of moral luck (Williams/Nagel), so no terminology change was made; the Gradient-Driven Expectation Field was re-derived and found algebraically self-consistent — E(t) can fall while S(t) rises once s(t) passes β/(2β+1) — but it remains an exploratory, empirically unvalidated construction and is not endorsed by any SEP entry; the essay's technology claims avoid technological determinism and are consistent with the SEP discussion of Marx and Winner on the politics of artifacts.

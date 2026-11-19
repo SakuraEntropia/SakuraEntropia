@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SakuraEntropia | The Distribution of Historical Agency</title>
+  <meta name="description" content="A living essay on the distribution of historical agency, the cost of mediocrity, and the mechanics of persistence in the age of intelligence.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+  
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+  <!-- Top Reading Progress Indicator -->
+  <div id="progress-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <button id="mobile-menu-btn" class="icon-btn mobile-only" aria-label="Toggle Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <a href="#essay" class="brand-link" onclick="switchTab('essay')">
+          <span class="brand-logo">🌸</span>
+          <div class="brand-text">
+            <span class="brand-name">SakuraEntropia</span>
+            <span class="brand-sub">Historical Agency</span>
+          </div>
+        </a>
+        <span class="version-tag">v2026.11</span>
+      </div>
+
+      <nav class="site-nav">
+        <button class="nav-tab active" data-tab="essay" onclick="switchTab('essay')">
+          <span class="tab-icon">📖</span> <span class="tab-label">Essay</span>
+        </button>
+        <button class="nav-tab" data-tab="model" onclick="switchTab('model')">
+          <span class="tab-icon">📐</span> <span class="tab-label">Expectation Model</span>
+        </button>
+        <button class="nav-tab" data-tab="wager" onclick="switchTab('wager')">
+          <span class="tab-icon">🎲</span> <span class="tab-label">Pascal's Wager</span>
+        </button>
+        <button class="nav-tab" data-tab="agency" onclick="switchTab('agency')">
+          <span class="tab-icon">🏛️</span> <span class="tab-label">Agency Scale</span>
+        </button>
+        <button class="nav-tab" data-tab="projects" onclick="switchTab('projects')">
+          <span class="tab-icon">🧬</span> <span class="tab-label">Projects & Bio</span>
+        </button>
+      </nav>
+
+      <div class="header-controls">
+        <!-- Search Trigger -->
+        <button id="search-btn" class="icon-btn" title="Search essay (Ctrl+K)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" class="ctrl-btn lang-btn" title="Switch Language">
+          <span id="lang-indicator">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-alt">中文</span>
+        </button>
+
+        <!-- Font Size Controls -->
+        <div class="font-size-ctrl">
+          <button id="font-dec-btn" class="icon-btn small" title="Decrease font size">A-</button>
+          <button id="font-inc-btn" class="icon-btn small" title="Increase font size">A+</button>
+        </div>
+
+        <!-- Theme Switcher -->
+        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Light/Dark Theme">
+          <svg id="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg id="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+
+        <!-- GitHub Repo Link -->
+        <a href="https://github.com/SakuraEntropia/SakuraEntropia" target="_blank" rel="noopener" class="icon-btn" title="View on GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal-backdrop" style="display:none;">
+    <div class="modal-card">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="global-search-input" placeholder="Search chapters, concepts, formulas..." autocomplete="off">
+        <button id="search-close-btn" class="icon-btn small">✕</button>
+      </div>
+      <div id="search-results" class="search-results-list"></div>
+      <div class="search-footer">
+        <span>ESC to close</span>
+        <span>↑↓ to navigate</span>
+        <span>ENTER to select</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="layout-container">
+    <!-- Left Sidebar / Table of Contents -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">
+          <span class="icon">📑</span> Table of Contents
+        </h3>
+        <span id="current-reading-pct" class="reading-pct-badge">0%</span>
+      </div>
+
+      <!-- Quick Section Jump Filter -->
+      <div class="toc-search-box">
+        <input type="text" id="toc-filter" placeholder="Filter sections...">
+      </div>
+
+      <!-- TOC Links Container -->
+      <nav id="toc-container" class="toc-nav"></nav>
+
+      <!-- Document Stats Card -->
+      <div class="sidebar-stats-card">
+        <div class="stats-row">
+          <span class="stats-label">Words</span>
+          <span id="stats-words" class="stats-val">~14,400</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-label">Est. Read Time</span>
+          <span id="stats-time" class="stats-val">~45 min</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-label">Math Formulas</span>
+          <span class="stats-val">8 Display · 55 Inline</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-label">Citations</span>
+          <span class="stats-val">10 SEP Entries</span>
+        </div>
+        <div class="stats-row">
+          <span class="stats-label">Updated</span>
+          <span class="stats-val">Nov 19, 2026</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <!-- TAB 1: ESSAY READER -->
+      <section id="tab-essay" class="tab-content active">
+        <!-- Essay Hero Banner -->
+        <div class="essay-hero">
+          <div class="hero-tags">
+            <span class="badge badge-primary">Living Essay</span>
+            <span class="badge badge-secondary">First Principles</span>
+            <span class="badge badge-accent">KaTeX Verified</span>
+          </div>
+          <h1 id="essay-title" class="hero-title">Preface: Some Thoughts on Humans and Existing Social Systems</h1>
+          <p id="essay-subtitle" class="hero-subtitle">A living essay on the distribution of historical agency, the cost of mediocrity, and the mechanics of persistence in the age of intelligence.</p>
+          
+          <div class="hero-meta">
+            <div class="author-info">
+              <span class="author-avatar">🌸</span>
+              <div>
+                <strong class="author-name">SakuraEntropia</strong>
+                <span class="author-handle">@SakuraEntropia</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <button class="action-btn" onclick="toggleLanguage()">
+                <span class="btn-icon">🌐</span> Switch to <span id="hero-alt-lang">中文版</span>
+              </button>
+              <button class="action-btn" onclick="switchTab('model')">
+                <span class="btn-icon">📐</span> Interactive Model
+              </button>
+              <a href="https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropia/main/ESSAY.md" target="_blank" class="action-btn secondary">
+                <span class="btn-icon">📄</span> Raw Markdown
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rendered Essay HTML Content -->
+        <article id="article-body" class="markdown-body">
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Rendering essay with KaTeX mathematical formulas...</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- TAB 2: INTERACTIVE MODEL (The Gradient-Driven Expectation Field) -->
+      <section id="tab-model" class="tab-content">
+        <div class="tool-hero">
+          <span class="badge badge-accent">Mathematical Simulation</span>
+          <h2>The Gradient-Driven Expectation Field</h2>
+          <p>An interactive dynamic simulation of the societal expectation inflection model derived in Section 20.</p>
+        </div>
+
+        <div class="model-grid">
+          <!-- Canvas Visualization -->
+          <div class="model-canvas-card">
+            <div class="canvas-header">
+              <div class="canvas-title-group">
+                <span class="dot-indicator green"></span>
+                <strong>Phase Curve: Real Progress \(R(s)\) vs Psychological Expectation \(E(s)\)</strong>
+              </div>
+              <div class="canvas-legend">
+                <span class="legend-item"><span class="legend-color cyan"></span> Real Progress \(R(s)\)</span>
+                <span class="legend-item"><span class="legend-color pink"></span> Expectation \(E(s)\)</span>
+                <span class="legend-item"><span class="legend-color yellow"></span> Inflection Threshold \(s^*\)</span>
+              </div>
+            </div>
+            
+            <div class="canvas-wrapper">
+              <canvas id="modelCanvas" width="720" height="400"></canvas>
+            </div>
+
+            <!-- Dynamic State Alert -->
+            <div id="model-status-card" class="status-card">
+              <div class="status-icon" id="status-icon">🚀</div>
+              <div class="status-info">
+                <h4 id="status-title">Accumulation Phase: Expectations Rising</h4>
+                <p id="status-desc">Progress gradient is accelerating, and societal expectations are steadily expanding.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls & Sliders Card -->
+          <div class="model-controls-card">
+            <h3>Parameters & Diagnostics</h3>
+            
+            <!-- Sensitivity Beta -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-beta">Nonlinear Sensitivity \(\beta\)</label>
+                <span id="val-beta" class="val-display">1.00</span>
+              </div>
+              <input type="range" id="slider-beta" min="0.2" max="3.0" step="0.05" value="1.0">
+              <span class="control-hint">Curvature of progress perception (\(\beta > 1\) implies high convexity).</span>
+            </div>
+
+            <!-- Current Speed s(t) -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-s">Normalized Progress \(s = S'(t)/\max S'(t)\)</label>
+                <span id="val-s" class="val-display">0.45</span>
+              </div>
+              <input type="range" id="slider-s" min="0.01" max="0.99" step="0.01" value="0.45">
+              <span class="control-hint">Relative development velocity relative to historical maximum.</span>
+            </div>
+
+            <!-- Max Scale R_max -->
+            <div class="control-group">
+              <div class="control-header">
+                <label for="slider-rmax">Potential Scale \(R_{\max}\)</label>
+                <span id="val-rmax" class="val-display">500</span>
+              </div>
+              <input type="range" id="slider-rmax" min="100" max="1000" step="50" value="500">
+              <span class="control-hint">Absolute upper bound on civilizational production capacity.</span>
+            </div>
+
+            <!-- Formula Reference Card -->
+            <div class="math-box">
+              <div class="math-title">Governing Equations</div>
+              <div class="math-eq">
+                \[ R(s) = R_{\max} \cdot s^\beta \]
+              </div>
+              <div class="math-eq">
+                \[ E(s) = \frac{R_{\max}}{\beta+1} s^\beta \left(1 - s^{\beta+1}\right) \]
+              </div>
+              <div class="math-eq highlight">
+                \[ s^* = \left(\frac{\beta}{2\beta+1}\right)^{\frac{1}{\beta+1}} \]
+              </div>
+            </div>
+
+            <!-- Real-time Numerical Diagnostics -->
+            <div class="diagnostics-grid">
+              <div class="diag-cell">
+                <span class="diag-lbl">Peak Threshold \(s^*\)</span>
+                <span id="out-s-star" class="diag-val">0.333</span>
+              </div>
+              <div class="diag-cell">
+                <span class="diag-lbl">Real Progress \(R(s)\)</span>
+                <span id="out-r-val" class="diag-val">225.0</span>
+              </div>
+              <div class="diag-cell">
+                <span class="diag-lbl">Current Expectation \(E(s)\)</span>
+                <span id="out-e-val" class="diag-val">89.7</span>
+              </div>
+              <div class="diag-cell">
+                <span class="diag-lbl">Gradient \(\frac{dE}{ds}\)</span>
+                <span id="out-de-val" class="diag-val negative">-12.4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="theory-explanation">
+          <h3>The Core Sociological Paradox</h3>
+          <p>
+            When technological progress accelerates, society does not evaluate its condition based on cumulative achievements \(R(t)\), but on the psychological derivative \(E(t)\).
+            As normalized velocity \(s(t)\) passes the threshold \(s^* = \left(\frac{\beta}{2\beta+1}\right)^{\frac{1}{\beta+1}}\), <strong>expectations begin a steep crash even while actual production capacity continues to climb</strong>.
+            This mathematically explains why societies undergoing the most rapid technological revolutions can simultaneously experience profound existential cynicism, burnout, and generational exhaustion.
+          </p>
+        </div>
+      </section>
+
+      <!-- TAB 3: PASCAL'S WAGER DECISION MATRIX -->
+      <section id="tab-wager" class="tab-content">
+        <div class="tool-hero">
+          <span class="badge badge-accent">Decision Theory & Metaphysics</span>
+          <h2>A Wager on God: The 2×2 Decision Matrix</h2>
+          <p>Evaluating the secular utility of faith, historical contingency, and first principles through an expected utility model.</p>
+        </div>
+
+        <!-- 2x2 Interactive Grid -->
+        <div class="wager-matrix-container">
+          <table class="wager-table">
+            <thead>
+              <tr>
+                <th class="matrix-corner">Choice \ Reality</th>
+                <th class="matrix-head">God Exists (\(G\))<br><span class="prob-sub">Prob = \(p\)</span></th>
+                <th class="matrix-head">God Does Not Exist (\(N\))<br><span class="prob-sub">Prob = \(1 - p\)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="matrix-row-head"><strong>I Believe (\(B\))</strong></td>
+                <td class="matrix-cell case-1" onclick="showCaseDetails(1)">
+                  <div class="cell-tag">Case I</div>
+                  <h4>Belief with God</h4>
+                  <p>Metaphysical alignment with reality. Non-interventionist creator demands no dogma, but grants cosmic coherence.</p>
+                  <span class="utility-badge">\(U_{BG}\)</span>
+                </td>
+                <td class="matrix-cell case-2 active" onclick="showCaseDetails(2)">
+                  <div class="cell-tag highlight">Case II (Core)</div>
+                  <h4>Secular Utility of Faith</h4>
+                  <p>In an empty universe, belief provides psychological order, resists despair against contingency, and anchors ethics.</p>
+                  <span class="utility-badge positive">\(U_{BN} > 0\)</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="matrix-row-head"><strong>I Disbelieve (\(N\))</strong></td>
+                <td class="matrix-cell case-3" onclick="showCaseDetails(3)">
+                  <div class="cell-tag">Case III</div>
+                  <h4>Disbelief with God</h4>
+                  <p>Erroneous metaphysical stance. A non-anthropomorphic creator values intellectual honesty over tribal performance.</p>
+                  <span class="utility-badge">\(U_{NG}\)</span>
+                </td>
+                <td class="matrix-cell case-4" onclick="showCaseDetails(4)">
+                  <div class="cell-tag">Case IV</div>
+                  <h4>Disbelief without God</h4>
+                  <p>Epistemic alignment with a godless universe. Secular humanism and science supply resilient grounding.</p>
+                  <span class="utility-badge">\(U_{NN}\)</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Utility Simulator -->
+        <div class="wager-sim-card">
+          <h3>Expected Utility Simulator</h3>
+          <div class="sim-grid">
+            <div class="sim-controls">
+              <div class="control-group">
+                <div class="control-header">
+                  <label for="sim-prob">Subjective Probability of God \(p\)</label>
+                  <span id="val-sim-p" class="val-display">0.15</span>
+                </div>
+                <input type="range" id="sim-prob" min="0.0" max="1.0" step="0.01" value="0.15">
+              </div>
+
+              <div class="control-group">
+                <div class="control-header">
+                  <label for="sim-ubn">Secular Utility of Belief \(U_{BN}\)</label>
+                  <span id="val-sim-ubn" class="val-display">+40</span>
+                </div>
+                <input type="range" id="sim-ubn" min="-50" max="100" step="5" value="40">
+                <span class="control-hint">Existential grounding minus dogma & cognitive friction.</span>
+              </div>
+
+              <div class="control-group">
+                <div class="control-header">
+                  <label for="sim-unn">Utility of Disbelief in Empty World \(U_{NN}\)</label>
+                  <span id="val-sim-unn" class="val-display">+30</span>
+                </div>
+                <input type="range" id="sim-unn" min="-50" max="100" step="5" value="30">
+                <span class="control-hint">Clarity of secular rationalism and empirical independence.</span>
+              </div>
+            </div>
+
+            <div class="sim-results">
+              <div class="result-box">
+                <span class="res-label">Expected Utility of Belief \(EU(B)\)</span>
+                <span id="out-eu-b" class="res-num positive">46.0</span>
+                <span class="res-formula">\(p U_{BG} + (1-p) U_{BN}\)</span>
+              </div>
+              <div class="result-box">
+                <span class="res-label">Expected Utility of Disbelief \(EU(N)\)</span>
+                <span id="out-eu-n" class="res-num">28.5</span>
+                <span class="res-formula">\(p U_{NG} + (1-p) U_{NN}\)</span>
+              </div>
+              <div class="verdict-card" id="wager-verdict">
+                <strong>Pragmatic Rationality holds:</strong> Faith yields positive secular utility regardless of supernatural verification.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="theory-explanation">
+          <h3>The Epistemic Boundary</h3>
+          <p>
+            <em>The rationality of a belief as a practical choice is not the same as the truth of that belief.</em>
+            Practical rationality evaluates utility; epistemic rationality demands truth.
+            Believing in an overarching witness allows an individual to resist the nihilism of historical lottery without abandoning empirical rigor in science and technology.
+          </p>
+        </div>
+      </section>
+
+      <!-- TAB 4: AGENCY SCALE -->
+      <section id="tab-agency" class="tab-content">
+        <div class="tool-hero">
+          <span class="badge badge-accent">Historical Demographics</span>
+          <h2>The Pyramidal Scale of Historical Agency</h2>
+          <p>Quantifying the infinitesimal probability of leaving an indelible mark on the trajectory of civilization.</p>
+        </div>
+
+        <div class="agency-visualizer-card">
+          <div class="scale-bar-container">
+            <div class="scale-step step-total">
+              <div class="scale-num">117,000,000,000</div>
+              <div class="scale-desc">Cumulative Homo Sapiens Ever Lived</div>
+              <div class="scale-bar" style="width: 100%;"></div>
+            </div>
+            <div class="scale-step step-alive">
+              <div class="scale-num">8,100,000,000</div>
+              <div class="scale-desc">Currently Living Humans (6.9%)</div>
+              <div class="scale-bar" style="width: 6.9%;"></div>
+            </div>
+            <div class="scale-step step-wiki">
+              <div class="scale-num">4,700,000</div>
+              <div class="scale-desc">All Documented Biographies in Human History (0.004%)</div>
+              <div class="scale-bar" style="width: 1.5%;"></div>
+            </div>
+            <div class="scale-step step-pantheon">
+              <div class="scale-num">200,000 — 250,000</div>
+              <div class="scale-desc">Consequential Contributors to Civilization (Pantheon 1.0/2.0)</div>
+              <div class="scale-bar highlight" style="width: 0.8%;"></div>
+            </div>
+            <div class="scale-step step-outlier">
+              <div class="scale-num">~1,000 — 3,000</div>
+              <div class="scale-desc">Epoch-defining Figures (Newton, Turing, Confucius, Gauss...)</div>
+              <div class="scale-bar spark" style="width: 0.2%;"></div>
+            </div>
+          </div>
+
+          <div class="stat-callout">
+            <div class="callout-big">0.00017%</div>
+            <p>The statistical probability that any human who has ever walked this earth has made a non-trivial, lasting contribution to civilization.</p>
+          </div>
+        </div>
+
+        <div class="theory-explanation">
+          <h3>The Tension Between Realism and Outlier Will</h3>
+          <p>
+            "Realism can preserve your life, and realism can pave your tomb; idealism built civilizations, and ungrounded idealism manufactures psychosis."
+            This mathematical rarity is why ordinary societal cynicism urges everyone toward safety and mediocrity.
+            Yet every paradigm shift was forged by individuals who calculated the near-zero odds, refused to surrender, and chose to build anyway.
+          </p>
+        </div>
+      </section>
+
+      <!-- TAB 5: PROJECTS & BIO -->
+      <section id="tab-projects" class="tab-content">
+        <div class="tool-hero">
+          <span class="badge badge-accent">Engineering & Art</span>
+          <h2>Digital Content Creation (DCC) Ecosystem</h2>
+          <p>Building graphics-style pipelines for spatial audio, deep learning, and formal mathematics.</p>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-emoji">🎧</span>
+              <div>
+                <h3>Entropia-Atmos</h3>
+                <span class="project-sub">"Blender for Spatial Audio"</span>
+              </div>
+            </div>
+            <p>An AI + graphics inspired spatial audio engine: AudioGS (Audio Gaussian Splatting), Audio-USD, acoustic ray tracing, Acoustic-BRDF material shading, and DSP graph.</p>
+            <div class="project-tags">
+              <span>TypeScript</span>
+              <span>AudioGS</span>
+              <span>USD</span>
+              <span>DSP</span>
+            </div>
+            <a href="https://github.com/SakuraEntropia/Entropia-Atmos" target="_blank" class="project-link">View Repository →</a>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-emoji">🧠</span>
+              <div>
+                <h3>Entropia-Riko</h3>
+                <span class="project-sub">Node-Graph Deep Learning Editor</span>
+              </div>
+            </div>
+            <p>ComfyUI-style visual workflows for PyTorch: ~200 built-in nodes, live training curves, subgraphs, code export, and modular workspace on PyPI as <code>entropia-riko</code>.</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>React</span>
+              <span>PyTorch</span>
+            </div>
+            <a href="https://github.com/SakuraEntropia/Entropia-Riko" target="_blank" class="project-link">View Repository →</a>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-emoji">🧩</span>
+              <div>
+                <h3>Entropia-Template-UI</h3>
+                <span class="project-sub">Shared UI Shell</span>
+              </div>
+            </div>
+            <p>Reusable node-graph editor front-end extracted from Riko: React Flow + Zustand, splittable panels, Apple Liquid Glass theme. Published on npm as <code>entropia-template-ui</code>.</p>
+            <div class="project-tags">
+              <span>React</span>
+              <span>Vite</span>
+              <span>Zustand</span>
+              <span>npm</span>
+            </div>
+            <a href="https://github.com/SakuraEntropia/Entropia-Template-UI" target="_blank" class="project-link">View Repository →</a>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-emoji">📐</span>
+              <div>
+                <h3>Erdos-test</h3>
+                <span class="project-sub">Lean 4 + Mathlib Formalization</span>
+              </div>
+            </div>
+            <p>A <code>sorry</code>-free Lean 4 formalisation of the elementary layer around the Erdős–Straus conjecture with rigorous register tags (A proven, B computational, C conjecture, D AI).</p>
+            <div class="project-tags">
+              <span>Lean 4</span>
+              <span>Mathlib</span>
+              <span>Number Theory</span>
+            </div>
+            <a href="https://github.com/SakuraEntropia/Erdos-test" target="_blank" class="project-link">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="bio-card">
+          <h3>About the Author</h3>
+          <p>
+            Computer graphics enthusiast building graphics-style pipelines for things that aren't images — sound, neural networks, and mathematical proofs.
+            Currently exploring Quantum Computing, AI, Music, Animation, and Vocaloid.
+          </p>
+          <div class="social-links-row">
+            <a href="https://github.com/SakuraEntropia" target="_blank" class="social-chip">GitHub</a>
+            <a href="https://space.bilibili.com/1935917667" target="_blank" class="social-chip">Bilibili</a>
+            <a href="https://www.zhihu.com/people/b8e59c8be41a29875c2e26dbd5b7c4a7" target="_blank" class="social-chip">Zhihu</a>
+            <a href="https://blog.csdn.net/DavidMEMZ" target="_blank" class="social-chip">CSDN</a>
+            <a href="mailto:davidqiuhr@outlook.com" class="social-chip">Email</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top-btn" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Footers -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>SakuraEntropia</strong> · <em>A Living Essay</em>
+        <p>Zero AI buzzwords. 100% verified first principles.</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/SakuraEntropia/SakuraEntropia" target="_blank">Repository</a>
+        <a href="https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropia/main/README.md" target="_blank">Profile README</a>
+        <a href="https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropia/main/ESSAY.md" target="_blank">Standalone ESSAY.md</a>
+        <a href="https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropia/main/README-zh.md" target="_blank">README-zh.md</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- 1. KaTeX Core & Auto-render -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+  <!-- 2. Marked.js for fast Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- 3. Pre-bundled Data (Runs offline and online) -->
+  <script src="js/data-en.js"></script>
+  <script src="js/data-zh.js"></script>
+
+  <!-- 4. Interactive Simulation & Matrix Logic -->
+  <script src="js/interactive-model.js"></script>
+
+  <!-- 5. Main Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>

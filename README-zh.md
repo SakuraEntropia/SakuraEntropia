@@ -2,6 +2,11 @@
 
 *一篇持续更新的文章。首次发布于 2026 年 8 月，最近更新于 2026 年 11 月 19 日。*
 
+> 🌸 **在线阅读与网页版**：
+> - 🌐 **在线博客与交互模型**：[sakuraentropia.github.io/SakuraEntropia](https://sakuraentropia.github.io/SakuraEntropia/)
+> - 📖 **英文独立版**：[ESSAY.md](ESSAY.md)
+> - 📄 **主页 Profile**：[README.md](README.md)
+
 ## 被许诺的未来
 
 我们曾经被许诺过这样的未来：物质大发达，人类实现 UBI，坐着 eVTOL 穿梭通勤，千米巨构摩天入云，环形空间站巡游天际，家家户户有机器人料理起居，繁重机械的体力劳动彻底归于机器，人类社会的资源按需充裕分配。
