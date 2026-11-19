@@ -124,21 +124,25 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
     card.querySelector('.expand-btn').textContent = open ? '收起 ▴' : '展开全文 ▾';
   }
 
+  async function ensureContent(card) {
+    if (card.dataset.loaded) return;
+    const id = card.dataset.id;
+    const inner = card.querySelector('.card-inner');
+    const html = await loadContent(id);
+    if (html === null) {
+      inner.innerHTML = '<p class="err">加载失败，请刷新页面重试。</p>';
+    } else {
+      inner.innerHTML = html;
+      renderMath(inner);
+      card.dataset.loaded = '1';
+    }
+  }
+
   async function openCard(card) {
     const id = card.dataset.id;
     setOpen(card, true);
     lastOpen = id;
-    const inner = card.querySelector('.card-inner');
-    if (!card.dataset.loaded) {
-      const html = await loadContent(id);
-      if (html === null) {
-        inner.innerHTML = '<p class="err">加载失败，请刷新页面重试。</p>';
-      } else {
-        inner.innerHTML = html;
-        renderMath(inner);
-        card.dataset.loaded = '1';
-      }
-    }
+    await ensureContent(card);
     buildTOC(id);
   }
 
@@ -217,6 +221,19 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
     window.addEventListener('scroll', () => {
       $('back-top') && $('back-top').classList.toggle('visible', window.scrollY > 600);
     }, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          io.unobserve(en.target);
+          ensureContent(en.target);
+        });
+      }, { rootMargin: '240px 0px' });
+      document.querySelectorAll('.card').forEach((card) => io.observe(card));
+    } else {
+      document.querySelectorAll('.card').forEach((card) => ensureContent(card));
+    }
 
     if (window.initModelSimulation) window.initModelSimulation();
     if (window.initWagerSimulator) window.initWagerSimulator();
