@@ -376,3 +376,26 @@ input[type="range"] {
 .prose table { display: block; overflow-x: auto; }
 .prose .katex-display, .prose .katex-display > .katex { overflow-x: auto; overflow-y: hidden; }
 .card.open .card-body { overflow-x: hidden; }
+
+/* ── Canon gate ── */
+.canon-gate {
+  max-width: 420px; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--card); padding: 22px;
+}
+.canon-label { font-size: .84rem; color: var(--fg-muted); margin: 0 0 12px; }
+#canon-form { display: flex; gap: 8px; }
+#canon-password {
+  flex: 1; min-width: 0; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--fg); padding: 9px 12px; font-size: .9rem;
+  outline: none;
+}
+#canon-password:focus { border-color: var(--accent); }
+.canon-submit {
+  border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+  border-radius: 8px; padding: 9px 16px; font-size: .86rem;
+}
+.canon-submit:hover { border-color: var(--accent); }
+.canon-msg { font-size: .8rem; color: #e07a7a; margin: 10px 0 0; min-height: 1em; }
+.canon-msg.ok { color: var(--fg-muted); }
+.canon-view { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg); }
+#canon-frame { display: block; width: 100%; height: calc(100vh - 190px); min-height: 560px; border: 0; background: #0d0f12; }
