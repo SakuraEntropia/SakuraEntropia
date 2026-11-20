@@ -249,6 +249,67 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
     if (label) label.textContent = '';
   }
 
+
+  /* ── Search ────────────────────────────────────────────── */
+  function searchIndex() {
+    const items = [{ id: 'preface', kind: 'preface', title: PREFACE_TITLE.zh + ' / ' + PREFACE_TITLE.en, meta: '序言 · 2026-11-20' }];
+    POSTS.forEach((p) => items.push({ id: p.id, kind: 'post', title: p.title, meta: p.code + ' · ' + p.date }));
+    return items;
+  }
+
+  let searchItems = [];
+  let searchActive = -1;
+
+  function highlight(title, q) {
+    const i = title.toLowerCase().indexOf(q.toLowerCase());
+    if (i < 0) return esc(title);
+    return esc(title.slice(0, i)) + '<mark>' + esc(title.slice(i, i + q.length)) + '</mark>' + esc(title.slice(i + q.length));
+  }
+
+  function renderSearch(q) {
+    const menu = $('search-menu');
+    if (!menu) return;
+    if (!q.trim()) { menu.hidden = true; return; }
+    const ql = q.trim().toLowerCase();
+    searchItems = searchIndex().filter((it) =>
+      it.title.toLowerCase().includes(ql) || it.meta.toLowerCase().includes(ql)
+    ).slice(0, 8);
+    searchActive = -1;
+    if (!searchItems.length) {
+      menu.innerHTML = '<div class="search-empty">没有匹配的文章</div>';
+      menu.hidden = false;
+      return;
+    }
+    menu.innerHTML = searchItems.map((it, i) =>
+      `<button class="search-item" data-id="${it.id}">${highlight(it.title, q.trim())}<span class="si-meta">${esc(it.meta)}</span></button>`
+    ).join('');
+    menu.querySelectorAll('.search-item').forEach((btn) => {
+      btn.addEventListener('click', () => goToResult(btn.dataset.id));
+    });
+    menu.hidden = false;
+  }
+
+  function goToResult(id) {
+    const menu = $('search-menu');
+    const input = $('search-input');
+    if (menu) menu.hidden = true;
+    if (input) input.value = '';
+    const card = document.getElementById('card-' + id);
+    if (!card) return;
+    if (!card.classList.contains('open')) openCard(card);
+    const y = card.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  function moveSearch(delta) {
+    const menu = $('search-menu');
+    if (!menu || menu.hidden || !searchItems.length) return;
+    searchActive = (searchActive + delta + searchItems.length) % searchItems.length;
+    menu.querySelectorAll('.search-item').forEach((el, i) => el.classList.toggle('active', i === searchActive));
+    const active = menu.querySelectorAll('.search-item')[searchActive];
+    if (active) active.scrollIntoView({ block: 'nearest' });
+  }
+
   /* ── Events ────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     applyTheme(theme);
@@ -258,6 +319,34 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
 
     $('theme-btn') && $('theme-btn').addEventListener('click', toggleTheme);
     $('lang-btn') && $('lang-btn').addEventListener('click', toggleLang);
+
+    const si = $('search-input');
+    if (si) {
+      si.addEventListener('input', (e) => renderSearch(e.target.value));
+      si.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); moveSearch(1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); moveSearch(-1); }
+        else if (e.key === 'Enter') {
+          const menu = $('search-menu');
+          if (!menu || menu.hidden || !searchItems.length) return;
+          e.preventDefault();
+          const idx = searchActive >= 0 ? searchActive : 0;
+          goToResult(searchItems[idx].id);
+          si.blur();
+        } else if (e.key === 'Escape') {
+          const menu = $('search-menu');
+          if (menu) menu.hidden = true;
+          si.value = '';
+        }
+      });
+      si.addEventListener('focus', () => { if (si.value) renderSearch(si.value); });
+    }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-wrap')) {
+        const menu = $('search-menu');
+        if (menu) menu.hidden = true;
+      }
+    });
 
     document.querySelector('.tabs').addEventListener('click', (e) => {
       const btn = e.target.closest('.tab-btn');
