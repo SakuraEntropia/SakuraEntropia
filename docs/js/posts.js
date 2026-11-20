@@ -50,7 +50,7 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
   function switchTab(name) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
-    if (name === 'model' && window.resizeCanvas) setTimeout(window.resizeCanvas, 80);
+    if (name === 'toys' && window.resizeCanvas) setTimeout(window.resizeCanvas, 80);
     window.scrollTo({ top: 0 });
   }
   window.switchTab = switchTab;

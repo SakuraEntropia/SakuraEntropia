@@ -464,3 +464,13 @@ input[type="range"] {
   .title-hero-caption { padding: 0 16px 22px; }
   .title-hero-eyebrow { letter-spacing: .22em; }
 }
+
+/* ── Toys tab ── */
+.toy-h { font-size: 1.05rem; margin: 4px 0 14px; letter-spacing: -.01em; }
+.toy-sub { color: var(--fg-muted); font-size: .9rem; margin: -6px 0 16px; }
+.toy-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0 30px; }
+
+/* ── Toys tab ── */
+.toy-h { font-size: 1.05rem; margin: 4px 0 14px; letter-spacing: -.01em; }
+.toy-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0 30px; }
+.toy-section .hero { margin-bottom: 18px; }
