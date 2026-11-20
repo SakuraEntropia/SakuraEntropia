@@ -474,3 +474,6 @@ input[type="range"] {
 .toy-h { font-size: 1.05rem; margin: 4px 0 14px; letter-spacing: -.01em; }
 .toy-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0 30px; }
 .toy-section .hero { margin-bottom: 18px; }
+
+/* stage handles hint */
+.stage-hint { font-size: .72rem; color: var(--fg-dim); margin: 4px 0 0; }

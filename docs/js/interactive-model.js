@@ -4,185 +4,291 @@
 
 let canvas, ctx;
 let beta = 1.0, currentS = 0.45, rMax = 500;
+let nStages = 3, steepK = 14, tS = [0.22, 0.5, 0.78];
+const C_R = '#38bdf8', C_E = '#c9a0dc', C_S = '#f59e0b';
+
+/* ── Exact model ──────────────────────────────────────────────────────
+   S(s) = (1/n) * Σ σ_k(s - t_i)          multi-stage logistic progress
+   R(s) = R_max * (S'(s) / max S')^β      extrapolation horizon
+   λ(s) = S'(s) / S(s)                    relative growth
+   E(s) = S(s) * exp( λ(s) * R(s) )       expectation field
+   ─────────────────────────────────────────────────────────────────── */
+
+const sig = (x) => 1 / (1 + Math.exp(-x));
+
+function Sfun(s) {
+  let a = 0;
+  for (let i = 0; i < tS.length; i++) a += sig(steepK * (s - tS[i]));
+  return a / tS.length;
+}
+function dSfun(s) {
+  let a = 0;
+  for (let i = 0; i < tS.length; i++) {
+    const g = sig(steepK * (s - tS[i]));
+    a += steepK * g * (1 - g);
+  }
+  return a / tS.length;
+}
+let _maxDS = -1;
+function maxDS() {
+  if (_maxDS < 0) {
+    let m = 1e-9;
+    for (let i = 0; i <= 2000; i++) m = Math.max(m, dSfun(i / 2000));
+    _maxDS = m;
+  }
+  return _maxDS;
+}
+function invalidate() { _maxDS = -1; }
+
+const Rfun = (s) => rMax * Math.pow(dSfun(s) / maxDS(), beta);
+const lam  = (s) => { const S = Sfun(s); return S > 1e-9 ? dSfun(s) / S : 0; };
+// log of E, kept exact; used for plotting and argmax
+const logE = (s) => Math.log(Math.max(1e-12, Sfun(s))) + lam(s) * Rfun(s);
+
+let _maxLogE = null;
+function maxLogE() {
+  if (_maxLogE === null) {
+    let m = -Infinity;
+    for (let i = 0; i <= 2000; i++) m = Math.max(m, logE(i / 2000));
+    _maxLogE = m;
+  }
+  return _maxLogE;
+}
+// log-scale display of E (monotone transform; shape untouched)
+function eNorm(s) {
+  const lo = -14, hi = maxLogE();
+  return Math.max(0, Math.min(1, (logE(s) - lo) / (hi - lo)));
+}
+
+function calc(s) {
+  const S = Sfun(s);
+  const R = Rfun(s);
+  const e = eNorm(s);
+  const h = 1e-3, s2 = Math.min(1, s + h), s1 = Math.max(0, s - h);
+  const dE = (logE(s2) - logE(s1)) / (s2 - s1) * e;   // dE/ds in normalized units
+  let sStar = 0, best = -Infinity;
+  for (let i = 0; i <= 600; i++) {
+    const v = logE(i / 600);
+    if (v > best) { best = v; sStar = i / 600; }
+  }
+  return { S, R, E: e, dE, sStar };
+}
+
+/* ── Init ───────────────────────────────────────────────────────────── */
 
 function initModelSimulation() {
   canvas = document.getElementById('modelCanvas');
   if (!canvas) return;
   ctx = canvas.getContext('2d');
 
-  ['slider-beta', 'slider-s', 'slider-rmax'].forEach(id => {
+  const bind = (id, apply) => {
     const el = document.getElementById(id);
     if (!el) return;
-    el.addEventListener('input', e => {
-      const v = parseFloat(e.target.value);
-      if (id === 'slider-beta') { beta = v; document.getElementById('val-beta').textContent = v.toFixed(2); }
-      if (id === 'slider-s')    { currentS = v; document.getElementById('val-s').textContent = v.toFixed(2); }
-      if (id === 'slider-rmax') { rMax = v; document.getElementById('val-rmax').textContent = v.toFixed(0); }
+    el.addEventListener('input', (e) => {
+      apply(parseFloat(e.target.value));
+      invalidate(); _maxLogE = null;
+      drawModel();
+    });
+  };
+  bind('slider-beta', (v) => { beta = v; set('val-beta', v.toFixed(2)); });
+  bind('slider-s', (v) => { currentS = v; set('val-s', v.toFixed(2)); });
+  bind('slider-rmax', (v) => { rMax = v; set('val-rmax', v.toFixed(0)); });
+  bind('slider-k', (v) => { steepK = v; set('val-k', v.toFixed(0)); });
+  bind('slider-n', (v) => {
+    nStages = v;
+    set('val-n', v.toFixed(0));
+    rebuildStages();
+  });
+
+  rebuildStages();
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // drag stage handles
+  canvas.addEventListener('pointerdown', (e) => {
+    const hit = hitStage(e);
+    if (hit < 0) return;
+    canvas.setPointerCapture(e.pointerId);
+    const move = (ev) => {
+      const s = sFromEvent(ev);
+      tS[hit] = Math.max(0.02, Math.min(0.98, s));
+      invalidate(); _maxLogE = null;
+      syncStageSliders();
+      drawModel();
+    };
+    const up = () => {
+      canvas.removeEventListener('pointermove', move);
+      canvas.removeEventListener('pointerup', up);
+    };
+    canvas.addEventListener('pointermove', move);
+    canvas.addEventListener('pointerup', up);
+  });
+}
+
+function set(id, t) { const el = document.getElementById(id); if (el) el.textContent = t; }
+
+function rebuildStages() {
+  if (tS.length !== nStages) {
+    const next = [];
+    for (let i = 0; i < nStages; i++) next.push(0.12 + (0.76 / Math.max(1, nStages - 1)) * i);
+    tS = next;
+  }
+  const box = document.getElementById('stage-box');
+  if (!box) return;
+  box.innerHTML = tS.map((t, i) => `
+    <div class="ctrl-group">
+      <div class="ctrl-row"><label>Stage ${i + 1} · t<sub>${i + 1}</sub></label><span class="mono" id="val-t${i}">${t.toFixed(2)}</span></div>
+      <input type="range" min="0.02" max="0.98" step="0.01" value="${t}" data-stage="${i}">
+    </div>`).join('');
+  box.querySelectorAll('input[type="range"]').forEach((el) => {
+    el.addEventListener('input', (e) => {
+      const i = parseInt(e.target.dataset.stage, 10);
+      tS[i] = parseFloat(e.target.value);
+      set('val-t' + i, tS[i].toFixed(2));
+      invalidate(); _maxLogE = null;
       drawModel();
     });
   });
+}
 
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
+function syncStageSliders() {
+  tS.forEach((t, i) => {
+    const el = document.querySelector('#stage-box input[data-stage="' + i + '"]');
+    if (el) el.value = t;
+    set('val-t' + i, t.toFixed(2));
+  });
 }
 
 function resizeCanvas() {
   if (!canvas) return;
   const dpr = window.devicePixelRatio || 1;
   const rect = canvas.parentElement.getBoundingClientRect();
-  const w = rect.width, h = 320;
-  canvas.width  = w * dpr;
-  canvas.height = h * dpr;
-  canvas.style.width  = w + 'px';
-  canvas.style.height = h + 'px';
-  ctx.scale(dpr, dpr);
+  const w = Math.max(240, rect.width), h = 320;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   drawModel();
 }
 
-// ── Multi-stage logistic progress curve ──────────────────────────────
-// S(s): two logistic stages -> S-shaped capability with a mid plateau.
-const SIG_K = 12, SIG_A = 0.30, SIG_B = 0.70;
-const sig = (x) => 1 / (1 + Math.exp(-x));
-const Sfun = (s) => 0.5 * (sig(SIG_K * (s - SIG_A)) + sig(SIG_K * (s - SIG_B)));
-const dSfun = (s) => {
-  const a = sig(SIG_K * (s - SIG_A)), b = sig(SIG_K * (s - SIG_B));
-  return 0.5 * SIG_K * (a * (1 - a) + b * (1 - b));
-};
-let MAX_DS = null;
-const maxDS = () => {
-  if (MAX_DS === null) {
-    MAX_DS = 0;
-    for (let i = 0; i <= 800; i++) MAX_DS = Math.max(MAX_DS, dSfun(i / 800));
-  }
-  return MAX_DS;
-};
-// normalized relative growth lambda(s) in [0,1]
-const lam = (s) => dSfun(s) / maxDS();
-// raw expectation: overshoots during acceleration, collapses as growth saturates
-const Eraw = (s, b) => Math.pow(sig(SIG_K * (s - SIG_A)) * (1 - sig(SIG_K * (s - SIG_B))), 1.6 / (1 + b));
-const EMAX = new Map();
-const emax = (b) => {
-  const key = b.toFixed(3);
-  if (!EMAX.has(key)) {
-    let m = 0;
-    for (let i = 0; i <= 600; i++) m = Math.max(m, Eraw(i / 600, b));
-    EMAX.set(key, m);
-  }
-  return EMAX.get(key);
-};
+/* ── Geometry helpers (canvas <-> s) ────────────────────────────────── */
 
-function calc(s, b, rm) {
-  const R = rm * Sfun(s);                       // real progress (multi-stage sigmoid)
-  const eNorm = Eraw(s, b) / emax(b);           // 0..1 expectation, normalized shape
-  const E = rm * 0.62 * eNorm;                  // plotted on the same axis
-  const h = 2e-3, s2 = Math.min(1, s + h), s1 = Math.max(0, s - h);
-  const dE = rm * 0.62 * (Eraw(s2, b) - Eraw(s1, b)) / (emax(b) * (s2 - s1));
-  let sStar = 0.5, best = -1;
-  for (let i = 0; i <= 400; i++) {
-    const v = Eraw(i / 400, b);
-    if (v > best) { best = v; sStar = i / 400; }
-  }
-  return { R, E, dE, sStar };
+const PAD = { t: 36, r: 26, b: 44, l: 52 };
+function plotWidth() { return canvas.width / (window.devicePixelRatio || 1) - PAD.l - PAD.r; }
+function plotHeight() { return canvas.height / (window.devicePixelRatio || 1) - PAD.t - PAD.b; }
+function sFromEvent(e) {
+  const r = canvas.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  return Math.max(0, Math.min(1, (x - PAD.l) / plotWidth()));
 }
+function hitStage(e) {
+  const r = canvas.getBoundingClientRect();
+  const x = e.clientX - r.left, y = e.clientY - r.top;
+  const pw = plotWidth(), ph = plotHeight();
+  let best = -1, bestD = 1e9;
+  for (let i = 0; i < tS.length; i++) {
+    const hx = PAD.l + pw * tS[i];
+    const hy = PAD.t + ph - ph * Sfun(tS[i]);
+    const d = Math.hypot(x - hx, y - hy);
+    if (d < bestD) { bestD = d; best = i; }
+  }
+  return bestD <= 16 ? best : -1;
+}
+
+/* ── Draw ───────────────────────────────────────────────────────────── */
 
 function drawModel() {
   if (!canvas || !ctx) return;
   const w = canvas.width / (window.devicePixelRatio || 1);
   const h = canvas.height / (window.devicePixelRatio || 1);
-  const p = { t: 36, r: 28, b: 44, l: 52 };
+  const p = PAD;
   const pw = w - p.l - p.r, ph = h - p.t - p.b;
 
-  const isLight = document.body.dataset.theme === 'light';
-  const grid   = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
-  const axis   = isLight ? 'rgba(0,0,0,0.12)'  : 'rgba(255,255,255,0.12)';
-  const txt    = isLight ? '#888891'            : '#55555e';
-  const C_R    = '#38bdf8';
-  const C_E    = '#c9a0dc';
-  const C_S    = '#f59e0b';
+  const isLight = document.documentElement.dataset.theme === 'light';
+  const grid = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.06)';
+  const axis = isLight ? 'rgba(0,0,0,0.14)' : 'rgba(255,255,255,0.14)';
+  const txt  = isLight ? '#888891' : '#55555e';
 
   ctx.clearRect(0, 0, w, h);
   ctx.font = '11px -apple-system, sans-serif';
 
-  // Grid
+  // grid + axes
   ctx.strokeStyle = grid; ctx.lineWidth = 1;
   for (let i = 0; i <= 5; i++) {
-    const yv = (rMax / 5) * i;
     const yp = p.t + ph - ph * (i / 5);
     ctx.fillStyle = txt; ctx.textAlign = 'right';
-    ctx.fillText(yv.toFixed(0), p.l - 8, yp + 4);
+    ctx.fillText((i / 5).toFixed(1), p.l - 8, yp + 4);
     ctx.beginPath(); ctx.moveTo(p.l, yp); ctx.lineTo(p.l + pw, yp); ctx.stroke();
-
     const xp = p.l + pw * (i / 5);
     ctx.textAlign = 'center';
     ctx.fillText((i / 5).toFixed(1), xp, p.t + ph + 18);
     ctx.beginPath(); ctx.moveTo(xp, p.t); ctx.lineTo(xp, p.t + ph); ctx.stroke();
   }
 
-  // Axes
-  ctx.strokeStyle = axis; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(p.l, p.t); ctx.lineTo(p.l, p.t + ph); ctx.lineTo(p.l + pw, p.t + ph); ctx.stroke();
-
-  const { sStar } = calc(0.5, beta, rMax);
-
-  // s* line
+  const { sStar } = calc(0.5);
   const sx = p.l + pw * sStar;
-  ctx.save(); ctx.strokeStyle = C_S; ctx.lineWidth = 1.5;
-  ctx.setLineDash([4, 4]);
+
+  // threshold
+  ctx.save(); ctx.strokeStyle = C_S; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
   ctx.beginPath(); ctx.moveTo(sx, p.t); ctx.lineTo(sx, p.t + ph); ctx.stroke();
   ctx.restore();
   ctx.fillStyle = C_S; ctx.textAlign = 'center';
   ctx.fillText('s* = ' + sStar.toFixed(3), sx, p.t - 10);
 
-  // Draw curve helper
-  function drawCurve(colorStr, getter) {
-    ctx.beginPath(); ctx.strokeStyle = colorStr; ctx.lineWidth = 2;
-    for (let i = 0; i <= 120; i++) {
-      const s = i / 120;
-      const v = getter(s);
+  // exact curves, no smoothing: dense polyline of the formulas
+  const plot = (color, valueAt, lineWidth = 2) => {
+    ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = lineWidth;
+    const N = 480;
+    for (let i = 0; i <= N; i++) {
+      const s = i / N;
+      const yp = p.t + ph - ph * Math.max(0, Math.min(1, valueAt(s)));
       const xp = p.l + pw * s;
-      const yp = p.t + ph - ph * Math.max(0, Math.min(1, v / rMax));
       i === 0 ? ctx.moveTo(xp, yp) : ctx.lineTo(xp, yp);
     }
     ctx.stroke();
-  }
+  };
 
-  drawCurve(C_R, s => calc(s, beta, rMax).R);
-  drawCurve(C_E, s => calc(s, beta, rMax).E);
+  plot(C_R, (s) => Sfun(s));                 // progress S(s)
+  plot(C_R, (s) => dSfun(s) / maxDS(), 1);   // horizon R(s) normalized
+  plot(C_E, (s) => eNorm(s));                // expectation E(s) normalized
 
-  // Current point markers
-  const cv = calc(currentS, beta, rMax);
-  const cx = p.l + pw * currentS;
-
-  ctx.save(); ctx.strokeStyle = axis; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
-  ctx.beginPath(); ctx.moveTo(cx, p.t); ctx.lineTo(cx, p.t + ph); ctx.stroke(); ctx.restore();
-
-  [[C_R, cv.R], [C_E, cv.E]].forEach(([c, v]) => {
-    const cyp = p.t + ph - ph * Math.max(0, Math.min(1, v / rMax));
-    ctx.fillStyle = c;
-    ctx.beginPath(); ctx.arc(cx, cyp, 5, 0, Math.PI * 2); ctx.fill();
+  // stage handles
+  tS.forEach((t) => {
+    const hx = p.l + pw * t;
+    const hy = p.t + ph - ph * Sfun(t);
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = C_S; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(hx, hy, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
   });
 
-  // Diagnostics
-  const od = i => document.getElementById(i);
-  od('out-s-star') && (od('out-s-star').textContent = cv.sStar.toFixed(3));
-  od('out-r-val')  && (od('out-r-val').textContent  = cv.R.toFixed(1));
-  od('out-e-val')  && (od('out-e-val').textContent  = cv.E.toFixed(1));
-  if (od('out-de-val')) {
-    od('out-de-val').textContent = (cv.dE >= 0 ? '+' : '') + cv.dE.toFixed(1);
-    od('out-de-val').className = 'mono ' + (cv.dE < 0 ? 'neg' : '');
+  // current s marker
+  const cv = calc(currentS);
+  const cx = p.l + pw * currentS;
+  ctx.save(); ctx.strokeStyle = axis; ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(cx, p.t); ctx.lineTo(cx, p.t + ph); ctx.stroke();
+  ctx.restore();
+
+  // diagnostics
+  set('out-s-star', cv.sStar.toFixed(3));
+  set('out-r-val', cv.R.toFixed(1));
+  set('out-e-val', cv.E.toFixed(3));
+  set('out-s-val', cv.S.toFixed(3));
+  if (document.getElementById('out-de-val')) {
+    const el = document.getElementById('out-de-val');
+    el.textContent = (cv.dE >= 0 ? '+' : '') + cv.dE.toFixed(2);
+    el.className = 'mono ' + (cv.dE < 0 ? 'neg' : '');
   }
 
-  // Status card
-  const st = od('status-title'), sd = od('status-desc'), si = od('status-icon');
+  const st = document.getElementById('status-title');
+  const sd = document.getElementById('status-desc');
+  const si = document.getElementById('status-icon');
   if (st) {
     if (currentS < cv.sStar) {
       si.textContent = '🚀';
       st.textContent = 'Accumulation Phase  (s < s*)';
-      sd.textContent = `dE/ds = +${cv.dE.toFixed(1)}. Expectations are still rising with speed.`;
+      sd.textContent = 'Expectations still rising with speed. R(s) below its maximum.';
     } else {
       si.textContent = '⚠️';
       st.textContent = 'Expectation Crash Zone  (s > s*)';
-      sd.textContent = `dE/ds = ${cv.dE.toFixed(1)}. Real progress climbs; collective expectations collapse.`;
+      sd.textContent = 'Real progress climbs; collective expectations collapse.';
     }
   }
 }

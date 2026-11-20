@@ -71,8 +71,8 @@
         <div class="canvas-card">
           <div class="canvas-top">
             <div class="legend">
-              <span><i class="dot cyan"></i>Progress \(R(s)\) — multi-stage sigmoid</span>
-              <span><i class="dot pink"></i>Expectation \(E(s)\)</span>
+              <span><i class="dot cyan"></i>Progress \(S(s)\) (multi-stage, solid) / Horizon \(R(s)\) (thin)</span>
+              <span><i class="dot pink"></i>Expectation \(E(s)\) — log scale</span>
               <span><i class="dot yellow"></i>Threshold \(s^*\)</span>
             </div>
           </div>
@@ -97,19 +97,29 @@
             <input type="range" id="slider-s" min="0.01" max="0.99" step="0.01" value="0.45">
           </div>
           <div class="ctrl-group">
+            <div class="ctrl-row"><label>Logistic Stages \(n\)</label><span id="val-n" class="mono">3</span></div>
+            <input type="range" id="slider-n" min="1" max="5" step="1" value="3">
+          </div>
+          <div class="ctrl-group">
+            <div class="ctrl-row"><label>Steepness \(k\)</label><span id="val-k" class="mono">14</span></div>
+            <input type="range" id="slider-k" min="4" max="24" step="1" value="14">
+          </div>
+          <div id="stage-box"></div>
+          <div class="ctrl-group">
             <div class="ctrl-row"><label>Potential Scale \(R_{\max}\)</label><span id="val-rmax" class="mono">500</span></div>
             <input type="range" id="slider-rmax" min="100" max="1000" step="50" value="500">
           </div>
           <div class="math-block">
             <div class="math-label">Governing equations</div>
-            \[ S(s) = \tfrac{1}{2}\left(\sigma_k(s-a) + \sigma_k(s-b)\right),\; k=12 \]
-            \[ R(s) = R_{\max}\,S(s) \]
-            \[ E(s) \propto S(s)\,\exp\!\left[\ln 2 \cdot \lambda(s)^{1+\beta}\right],\; \lambda = \tfrac{S'}{\max S'} \]
+            \[ S(s) = \tfrac{1}{n}\sum_{i=1}^{n}\sigma_k(s-t_i) \]
+            \[ R(s) = R_{\max}\left(\tfrac{S'(s)}{\max S'}\right)^{\beta} \]
+            \[ E(s) = S(s)\exp\!\left[\lambda(s)R(s)\right],\; \lambda(s)=\tfrac{S'(s)}{S(s)} \]
           </div>
           <div class="diag-grid">
             <div class="diag"><span>Peak \(s^*\)</span><span id="out-s-star" class="mono">0.333</span></div>
+            <div class="diag"><span>\(S(s)\)</span><span id="out-s-val" class="mono">0.30</span></div>
             <div class="diag"><span>\(R(s)\)</span><span id="out-r-val" class="mono">225.0</span></div>
-            <div class="diag"><span>\(E(s)\)</span><span id="out-e-val" class="mono">89.7</span></div>
+            <div class="diag"><span>log₁₀\(E(s)\)</span><span id="out-e-val" class="mono">89.7</span></div>
             <div class="diag"><span>\(dE/ds\)</span><span id="out-de-val" class="mono neg">−12.4</span></div>
           </div>
         </div>
