@@ -71,7 +71,7 @@
         <div class="canvas-card">
           <div class="canvas-top">
             <div class="legend">
-              <span><i class="dot cyan"></i>Real Progress \(R(s)\)</span>
+              <span><i class="dot cyan"></i>Progress \(R(s)\) — multi-stage sigmoid</span>
               <span><i class="dot pink"></i>Expectation \(E(s)\)</span>
               <span><i class="dot yellow"></i>Threshold \(s^*\)</span>
             </div>
@@ -102,9 +102,9 @@
           </div>
           <div class="math-block">
             <div class="math-label">Governing equations</div>
-            \[ R(s) = R_{\max} \cdot s^\beta \]
-            \[ E(s) = \tfrac{R_{\max}}{\beta+1}\,s^\beta\!\left(1 - s^{\beta+1}\right) \]
-            \[ s^* = \!\left(\tfrac{\beta}{2\beta+1}\right)^{\!\frac{1}{\beta+1}} \]
+            \[ S(s) = \tfrac{1}{2}\left(\sigma_k(s-a) + \sigma_k(s-b)\right),\; k=12 \]
+            \[ R(s) = R_{\max}\,S(s) \]
+            \[ E(s) \propto S(s)\,\exp\!\left[\ln 2 \cdot \lambda(s)^{1+\beta}\right],\; \lambda = \tfrac{S'}{\max S'} \]
           </div>
           <div class="diag-grid">
             <div class="diag"><span>Peak \(s^*\)</span><span id="out-s-star" class="mono">0.333</span></div>

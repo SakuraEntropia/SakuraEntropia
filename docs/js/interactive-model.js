@@ -39,11 +39,49 @@ function resizeCanvas() {
   drawModel();
 }
 
+// ── Multi-stage logistic progress curve ──────────────────────────────
+// S(s): two logistic stages -> S-shaped capability with a mid plateau.
+const SIG_K = 12, SIG_A = 0.30, SIG_B = 0.70;
+const sig = (x) => 1 / (1 + Math.exp(-x));
+const Sfun = (s) => 0.5 * (sig(SIG_K * (s - SIG_A)) + sig(SIG_K * (s - SIG_B)));
+const dSfun = (s) => {
+  const a = sig(SIG_K * (s - SIG_A)), b = sig(SIG_K * (s - SIG_B));
+  return 0.5 * SIG_K * (a * (1 - a) + b * (1 - b));
+};
+let MAX_DS = null;
+const maxDS = () => {
+  if (MAX_DS === null) {
+    MAX_DS = 0;
+    for (let i = 0; i <= 800; i++) MAX_DS = Math.max(MAX_DS, dSfun(i / 800));
+  }
+  return MAX_DS;
+};
+// normalized relative growth lambda(s) in [0,1]
+const lam = (s) => dSfun(s) / maxDS();
+// raw expectation: overshoots during acceleration, collapses as growth saturates
+const Eraw = (s, b) => Math.pow(sig(SIG_K * (s - SIG_A)) * (1 - sig(SIG_K * (s - SIG_B))), 1.6 / (1 + b));
+const EMAX = new Map();
+const emax = (b) => {
+  const key = b.toFixed(3);
+  if (!EMAX.has(key)) {
+    let m = 0;
+    for (let i = 0; i <= 600; i++) m = Math.max(m, Eraw(i / 600, b));
+    EMAX.set(key, m);
+  }
+  return EMAX.get(key);
+};
+
 function calc(s, b, rm) {
-  const R = rm * Math.pow(s, b);
-  const E = (rm / (b + 1)) * Math.pow(s, b) * (1 - Math.pow(s, b + 1));
-  const dE = (rm / (b + 1)) * Math.pow(s, b > 0 ? b - 1 : 0) * (b - (2 * b + 1) * Math.pow(s, b + 1));
-  const sStar = Math.pow(b / (2 * b + 1), 1 / (b + 1));
+  const R = rm * Sfun(s);                       // real progress (multi-stage sigmoid)
+  const eNorm = Eraw(s, b) / emax(b);           // 0..1 expectation, normalized shape
+  const E = rm * 0.62 * eNorm;                  // plotted on the same axis
+  const h = 2e-3, s2 = Math.min(1, s + h), s1 = Math.max(0, s - h);
+  const dE = rm * 0.62 * (Eraw(s2, b) - Eraw(s1, b)) / (emax(b) * (s2 - s1));
+  let sStar = 0.5, best = -1;
+  for (let i = 0; i <= 400; i++) {
+    const v = Eraw(i / 400, b);
+    if (v > best) { best = v; sStar = i / 400; }
+  }
   return { R, E, dE, sStar };
 }
 
