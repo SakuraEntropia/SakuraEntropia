@@ -477,3 +477,11 @@ input[type="range"] {
 
 /* stage handles hint */
 .stage-hint { font-size: .72rem; color: var(--fg-dim); margin: 4px 0 0; }
+
+/* language toggle */
+.pill-btn {
+  height: 32px; padding: 0 12px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--card); color: var(--fg-muted); font-size: .78rem; font-weight: 600;
+  letter-spacing: .04em;
+}
+.pill-btn:hover { color: var(--fg); border-color: var(--fg-dim); }

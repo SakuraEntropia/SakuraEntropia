@@ -19,15 +19,25 @@ const POSTS = [
   { id: 'p13', code: '08r', date: '2026-09-10', file: '润色版_08r_太空新国家假说：文明为什么需要新的大陆.md', title: '太空新国家假说：文明为什么需要新的大陆' },
   { id: 'p14', code: '08u', date: '日期待核实', file: '润色版_08u_统计学反出生主义：为何在这个时代，不生是对生命最大的慈悲.md', title: '统计学反出生主义：为何在这个时代，不生是对生命最大的慈悲' },
   { id: 'p15', code: '08w', date: '2026-07-20', file: '润色版_08w_社会流动性的齐奥尔科夫斯基约束.md', title: '社会流动性的齐奥尔科夫斯基约束' },
-  { id: 'p16', code: '08x', date: '日期待核实', file: '润色版_08x_制作委员会：问题很大，但为什么不能简单“取缔”.md', title: '制作委员会：问题很大，但为什么不能简单“取缔”' }
+  { id: 'p16', code: '08x', date: '日期待核实', file: '润色版_08x_制作委员会：问题很大，但为什么不能简单“取缔”.md', title: '制作委员会：问题很大，但为什么不能简单“取缔”' },
+  { id: 'p17', code: '08z', date: '2025-09-20', file: '论配乐人Kevin Penkin的编曲史.md', title: '论配乐人 Kevin Penkin 的编曲史' }
 ];
 
-const PREFACE_TITLE = '序言：关于人类和现有社会系统的一些思考';
+const PREFACE_TITLE = {
+  zh: '序言：关于人类和现有社会系统的一些思考',
+  en: 'Preface: Some Thoughts on Humans and Existing Social Systems'
+};
+const TAB_LABELS = {
+  zh: { blog: '文章', toys: 'Toys', canon: '世界观', projects: 'Projects', lang: 'EN' },
+  en: { blog: 'Posts', toys: 'Toys', canon: 'Canon', projects: 'Projects', lang: '中' }
+};
+const LANG_KEY = 'sakura_lang';
 const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropia/main/docs/posts/';
 
 (function () {
   const cache = new Map();
   let lastOpen = null;
+  let lang = localStorage.getItem(LANG_KEY) || 'zh';
 
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -58,9 +68,11 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
   /* ── Cards ─────────────────────────────────────────────── */
   function cardHTML(entry) {
     const isPreface = entry.kind === 'preface';
-    const title = isPreface ? PREFACE_TITLE : esc(entry.title);
+    const title = isPreface ? PREFACE_TITLE[lang] : esc(entry.title);
     const meta = isPreface
-      ? '<span class="tag">序言</span><span>更新于 2026-11-20</span><span>约 3.7 万字</span>'
+      ? (lang === 'zh'
+          ? '<span class="tag">序言</span><span>更新于 2026-11-20</span><span>约 3.7 万字</span>'
+          : '<span class="tag">Preface</span><span>Updated 2026-11-20</span><span>~14k words</span>')
       : `<span class="tag">随笔</span><span>${entry.code}</span><span>${entry.date}</span>`;
     return `
       <article class="card" id="card-${entry.id}" data-id="${entry.id}">
@@ -84,14 +96,57 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
     if (!list) return;
     const all = [{ id: 'preface', kind: 'preface' }].concat(POSTS);
     list.innerHTML = all.map(cardHTML).join('');
+    observeCards();
+  }
+
+  function observeCards() {
+    const cards = document.querySelectorAll('.card');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          io.unobserve(en.target);
+          ensureContent(en.target);
+        });
+      }, { rootMargin: '240px 0px' });
+      cards.forEach((card) => io.observe(card));
+    } else {
+      cards.forEach((card) => ensureContent(card));
+    }
+  }
+
+  function applyLangUI() {
+    const labels = TAB_LABELS[lang];
+    document.querySelectorAll('.tab-btn').forEach((b) => {
+      const key = b.dataset.tab;
+      if (labels[key]) b.textContent = labels[key];
+    });
+    const lb = $('lang-btn');
+    if (lb) lb.textContent = labels.lang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  }
+
+  function toggleLang() {
+    lang = lang === 'zh' ? 'en' : 'zh';
+    localStorage.setItem(LANG_KEY, lang);
+    applyLangUI();
+    const reopen = lastOpen === 'preface';
+    lastOpen = null;
+    renderList();
+    clearTOC();
+    if (reopen) {
+      const card = document.getElementById('card-preface');
+      if (card) openCard(card);
+    }
   }
 
   /* ── Content loading ───────────────────────────────────── */
   async function loadContent(id) {
-    if (cache.has(id)) return cache.get(id);
+    const key = id === 'preface' ? 'preface-' + lang : id;
+    if (cache.has(key)) return cache.get(key);
     let raw;
     if (id === 'preface') {
-      raw = window.ESSAY_ZH;
+      raw = lang === 'en' ? window.ESSAY_EN : window.ESSAY_ZH;
       if (!raw) return null;
     } else {
       const post = POSTS.find(p => p.id === id);
@@ -100,7 +155,7 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
       raw = await res.text();
     }
     const html = marked.parse(raw);
-    cache.set(id, html);
+    cache.set(key, html);
     return html;
   }
 
@@ -197,10 +252,12 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
   /* ── Events ────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     applyTheme(theme);
+    applyLangUI();
     renderList();
     clearTOC();
 
     $('theme-btn') && $('theme-btn').addEventListener('click', toggleTheme);
+    $('lang-btn') && $('lang-btn').addEventListener('click', toggleLang);
 
     document.querySelector('.tabs').addEventListener('click', (e) => {
       const btn = e.target.closest('.tab-btn');
@@ -221,19 +278,6 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
     window.addEventListener('scroll', () => {
       $('back-top') && $('back-top').classList.toggle('visible', window.scrollY > 600);
     }, { passive: true });
-
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((en) => {
-          if (!en.isIntersecting) return;
-          io.unobserve(en.target);
-          ensureContent(en.target);
-        });
-      }, { rootMargin: '240px 0px' });
-      document.querySelectorAll('.card').forEach((card) => io.observe(card));
-    } else {
-      document.querySelectorAll('.card').forEach((card) => ensureContent(card));
-    }
 
     if (window.initModelSimulation) window.initModelSimulation();
     if (window.initWagerSimulator) window.initWagerSimulator();
