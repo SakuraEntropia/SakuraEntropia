@@ -437,8 +437,9 @@ input[type="range"] {
   margin: 0 0 8px;
   font-size: .72rem;
   letter-spacing: .32em;
-  color: #cbb98d;
+  color: #e3d4ae;
   text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(0,0,0,.85);
 }
 .title-hero-title {
   margin: 0 0 10px;
