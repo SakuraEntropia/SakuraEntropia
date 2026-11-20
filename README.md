@@ -460,6 +460,8 @@ Yet reality is no oracle. Probability is not destiny. A tactical survival guide 
 
 Respect reality, but don't worship it. Reality should draw the tactical parameters of the plan, not the horizon of the imagination. Aggregate statistics trace the broad herd; they hold zero title over the fate of an individual. And no one should ever have to become extraordinary just to earn the right to steer their own life.
 
+This essay keeps updating. If I ever make it out, the second half gets written by whoever I have become; until then, the record stops honestly where it stops.
+
 ## Changelog
 
 - **2026-11-20** — Added the 1930s Huangpu River contrast passage to the Anthropic section; refreshed the data cut-off date.
