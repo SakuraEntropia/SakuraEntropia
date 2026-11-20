@@ -87,7 +87,7 @@ Small research toys, mostly rendering and physics:
 
 ## 📜 Preface: Some Thoughts on Humans and Existing Social Systems
 
-*A living essay. First published August 2026. Last updated November 20, 2026.*
+*A living essay. First published August 2026. Last updated November 21, 2026.*
 
 > 🌸 **Interactive Blog & Standalone Editions**:
 > - 🌐 **Interactive Blog & Expectation Model**: [sakuraentropia.github.io/SakuraEntropia](https://sakuraentropia.github.io/SakuraEntropia/)
@@ -462,8 +462,52 @@ Respect reality, but don't worship it. Reality should draw the tactical paramete
 
 This essay keeps updating. If I ever make it out, the second half gets written by whoever I have become; until then, the record stops honestly where it stops.
 
+
+## A Society That Has Pre-Accepted Its Own Mediocrity
+
+Across much of the Chinese-language internet, something quieter than burnout is at work: people do not merely assume they will end up ordinary; they treat that assumption as common sense and hand it to anyone who says they want to attempt something large. One caveat first: this is an observable cultural tendency, not a measured attitude of the whole population; a comment section is a comment section, not a survey. I quote it because it collects a discipline that is usually scattered.
+
+The example is a Bilibili interview with a young studio, Canglong Qixiu, that is trying to build an ambitious game. Three comments under it are instructive:
+
+> "After watching this, I think this guy and my son could hang out. My son is seven." (~3,406 likes)
+
+> "I wouldn't call him a clown; I'd just say he's destined to accomplish nothing."
+
+> "You're all laughing at him. I'll leave a comment here rooting for him. What if it works?" (~28 likes)
+
+The likes measure reaction inside that comment section only; they do not describe society. Yet the 3,406-to-28 gap is worth a second look: rooting for him is the comment that requires courage, while "he's like a child" and "he will fail" are the statements that cost nothing.
+
+The mechanism has four layers. First, internalized mediocrity: the sentence "you cannot change anything" migrates from a judgment about oneself into a norm about the world — not only I can't, you can't either; wanting something extraordinary just means you haven't grown up. Second, a credentials check for ambition: you may only voice a large ideal after producing a large result, even though exploration by definition happens before results exist. The same ambition is called vision after success and delusion before it. Third, conflating the probability of failure with a moral verdict: judging that a project will probably fail is not the same as proving its author deserves humiliation. A high-risk goal does not lose its reason to be attempted simply because success is unlikely. Fourth, post-hoc worship and pre-hoc humiliation coexist: we revere entrepreneurs, artists and scientists who made it, and mock those walking the same road before they have. Success is mythologized, and the failure that creation requires becomes invisible — only outcomes survive.
+
+I am not idealizing the interviewee. His project may well have serious technical, financial and execution problems, and professional criticism should exist. The line is between criticizing a plan and humiliating a person for daring to imagine one. The former addresses the design; the latter addresses the right to try.
+
+Which leads to the sentence worth keeping: the deepest conservatism of a society may not take the form of forbidding extraordinary ambition. It may take the form of convincing most people, in advance, that the extraordinary has nothing to do with them — and then requiring everyone else to agree.
+
+## Content Abundance and the Collapse of Creators' Bargaining Power
+
+The same structure then appears a second time, in a different venue: not the comment section, but the market.
+
+When content is scarce, audiences tolerate slow pacing, strange style and unflattering expression because substitutes are few. When supply is abundant, switching costs approach zero: not engaging, scroll on, watch the next one. The creator goes from scarce supplier to one replaceable option among many, and bargaining power shifts accordingly.
+
+Consumers gaining more choice is progress, with side effects. To stay in the feed, creators drift toward feedback: enter the main line faster, cut the setup; deliver emotional rewards more densely; remove thoughts that discomfort; avoid complex or slow narratives; adjust the work until it resembles forms the market has already validated. Which raises a question that does not resolve easily: as consumers become better at getting what they want, do creators become worse at expressing what consumers do not yet know they need?
+
+Tolerance for creators is becoming expensive. Work as personal as *Neon Genesis Evangelion*, which wrote the creator's own anxiety and psychic strain directly into the text, became a cultural event because of a particular market structure, distribution channels, cultural environment and scarcity — not because earlier audiences were more generous. When substitutes are near-infinite, why spend hours listening to a stranger's confusion and self-negation? As that willingness falls, the creator degrades from expresser into emotional service provider.
+
+Generative AI rewrites the supply side further, and the pieces must be kept apart: cost of production, distribution of quality, consumer attention, distribution channels, differentiation. AI need not destroy human creation, but it can drive down the cost per unit of content and shift the supply curve rightward. Attention, meanwhile, is scarce and does not expand with supply. Hence a structural trend: content grows cheap, attention stays scarce, and creators no longer compete only with peers but with a nearly unlimited supply for the same audience-hours. The effect differs across new authors, experimental work, long-cycle projects and non-commercial art: the more a work needs a slowly cultivated audience, the harder it is to survive an algorithm of immediate feedback.
+
+One hypothesis, offered as a hypothesis: when the market increasingly rewards immediate feedback, stable output and risk control, those best at adapting to the current market gain an edge, while work that must cultivate a new aesthetic faces a higher survival threshold. That is an adverse-selection risk, not a verdict. More supply also widens niche audiences, lowers the barrier to making things and creates new forms of expression. Both can be true at once.
+
+## The Two Mechanisms Compounding
+
+Placed together, the structure is plain. The first mechanism acts before creation begins: mockery, credentials checks and the shaming of failure lower a young person's ambition before the first line is written. The second acts after creation begins: competition, substitution and distribution pressure make creators abandon, line by line, whatever cannot earn immediate positive feedback. The first lowers the willingness to attempt; the second lowers the economic capacity to persist.
+
+Together they produce an odd environment: we celebrate the innovators of history while contemporary would-be innovators are made difficult to grow. The failures of the past are remembered because they eventually succeeded; the people failing right now are remembered only as cautionary tales.
+
+I will leave the question open rather than resolve it neatly: in an era that asks people to accept mediocrity while steadily devaluing original expression, by what means can a young person who has not yet succeeded still obtain the room to attempt something extraordinary?
+
 ## Changelog
 
+- **2026-11-21** — Added two chapters: "A Society That Has Pre-Accepted Its Own Mediocrity" and "Content Abundance and the Collapse of Creators' Bargaining Power," plus the section connecting both mechanisms.
 - **2026-11-20** — Added the 1930s Huangpu River contrast passage to the Anthropic section; refreshed the data cut-off date.
 - **2026-11-19** — Language polish (cleared artificial phrasing, defensive disclaimers, and rigid transitions while strictly preserving all facts, structure, and tone); added "A Wager on God" on Pascal's wager, expected utility, and first principles; added "A Generation Caught in a Non-War Catastrophe" and "The Fear of Supporting Humanity"; added the Yann LeCun passage on talent, luck and historical achievement; added the Anthropic two-degrees personal passage; added "The Gradient-Driven Expectation Field" model section; added the Lacan and Hegel passage on identification and recognition; split the essay into chapters; added references and a data cut-off note.
 - **2026-11** — Added the historical-figures research (Pantheon 1.0/2.0, Laouenan et al. 2022) and the personal estimate of roughly 200,000–250,000 consequential contributors in human history.
@@ -481,7 +525,7 @@ This essay keeps updating. If I ever make it out, the second half gets written b
 8. Dunbar, R. I. M. (1992). Neocortex size as a constraint on group size in primates. *Journal of Human Evolution*, 22(6), 469–493.
 9. Liu, C. (2008). *The Three-Body Problem* (三体).
 
-Note: company valuations, revenues and wealth figures are as reported on or before November 20, 2026.
+Note: company valuations, revenues and wealth figures are as reported on or before November 21, 2026.
 
 ## Verification Notes
 
