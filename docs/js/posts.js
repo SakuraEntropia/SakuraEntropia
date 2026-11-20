@@ -154,6 +154,9 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
       if (!res.ok) return null;
       raw = await res.text();
     }
+    // drop the export-facing metadata lines so the article starts with its title,
+    // not with a grey annotation under it
+    raw = raw.replace(/^> 首发日期：[^\n]*\n\n?/m, '').replace(/^> 润色说明：[^\n]*\n\n?/m, '');
     const html = marked.parse(raw);
     cache.set(key, html);
     return html;
@@ -245,7 +248,7 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
   function clearTOC() {
     const nav = $('toc-nav');
     const label = $('toc-article');
-    if (nav) nav.innerHTML = '<p class="toc-hint">展开一篇文章后，这里显示它的目录。</p>';
+    if (nav) nav.innerHTML = '';
     if (label) label.textContent = '';
   }
 
