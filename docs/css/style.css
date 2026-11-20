@@ -399,3 +399,67 @@ input[type="range"] {
 .canon-msg.ok { color: var(--fg-muted); }
 .canon-view { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--bg); }
 #canon-frame { display: block; width: 100%; height: calc(100vh - 190px); min-height: 560px; border: 0; background: #0d0f12; }
+
+/* ── Title hero (corporate-style banner) ── */
+.title-hero {
+  position: relative;
+  margin: 0 auto 34px;
+  max-width: 1080px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #101014;
+}
+.title-hero img {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 52vw, 600px);
+  object-fit: cover;
+  object-position: center 22%;
+  filter: saturate(1.02);
+}
+.title-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,10,.92) 0%, rgba(8,8,10,.55) 32%, rgba(8,8,10,0) 62%);
+  pointer-events: none;
+}
+.title-hero-caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 0 28px 30px;
+  text-align: center;
+  color: #f6f4ef;
+  z-index: 2;
+}
+.title-hero-eyebrow {
+  margin: 0 0 8px;
+  font-size: .72rem;
+  letter-spacing: .32em;
+  color: #cbb98d;
+  text-transform: uppercase;
+}
+.title-hero-title {
+  margin: 0 0 10px;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: .01em;
+  text-shadow: 0 2px 18px rgba(0,0,0,.55);
+}
+.title-hero-sub {
+  margin: 0;
+  font-size: clamp(.9rem, 1.3vw, 1.05rem);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #e7ddc5;
+}
+.title-hero-sub span { color: #fff; font-weight: 700; }
+
+@media (max-width: 640px) {
+  .title-hero { border-radius: 0; border-left: 0; border-right: 0; margin-bottom: 22px; }
+  .title-hero img { height: 62vh; object-position: center 18%; }
+  .title-hero-caption { padding: 0 16px 22px; }
+  .title-hero-eyebrow { letter-spacing: .22em; }
+}
