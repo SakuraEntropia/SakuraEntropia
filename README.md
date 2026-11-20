@@ -87,7 +87,7 @@ Small research toys, mostly rendering and physics:
 
 ## 📜 Preface: Some Thoughts on Humans and Existing Social Systems
 
-*A living essay. First published August 2026. Last updated November 19, 2026.*
+*A living essay. First published August 2026. Last updated November 20, 2026.*
 
 > 🌸 **Interactive Blog & Standalone Editions**:
 > - 🌐 **Interactive Blog & Expectation Model**: [sakuraentropia.github.io/SakuraEntropia](https://sakuraentropia.github.io/SakuraEntropia/)
@@ -458,6 +458,7 @@ Respect reality, but don't worship it. Reality should draw the tactical paramete
 
 ## Changelog
 
+- **2026-11-20** — Added the 1930s Huangpu River contrast passage to the Anthropic section; refreshed the data cut-off date.
 - **2026-11-19** — Language polish (cleared artificial phrasing, defensive disclaimers, and rigid transitions while strictly preserving all facts, structure, and tone); added "A Wager on God" on Pascal's wager, expected utility, and first principles; added "A Generation Caught in a Non-War Catastrophe" and "The Fear of Supporting Humanity"; added the Yann LeCun passage on talent, luck and historical achievement; added the Anthropic two-degrees personal passage; added "The Gradient-Driven Expectation Field" model section; added the Lacan and Hegel passage on identification and recognition; split the essay into chapters; added references and a data cut-off note.
 - **2026-11** — Added the historical-figures research (Pantheon 1.0/2.0, Laouenan et al. 2022) and the personal estimate of roughly 200,000–250,000 consequential contributors in human history.
 - **2026-08** — First version.
@@ -474,7 +475,7 @@ Respect reality, but don't worship it. Reality should draw the tactical paramete
 8. Dunbar, R. I. M. (1992). Neocortex size as a constraint on group size in primates. *Journal of Human Evolution*, 22(6), 469–493.
 9. Liu, C. (2008). *The Three-Body Problem* (三体).
 
-Note: company valuations, revenues and wealth figures are as reported on or before November 19, 2026.
+Note: company valuations, revenues and wealth figures are as reported on or before November 20, 2026.
 
 ## Verification Notes
 
