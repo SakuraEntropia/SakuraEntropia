@@ -1,5 +1,7 @@
 # ENTROPIA DESIGN PHILOSOPHY
 
+> 首发日期：2026-09-10
+
 > 润色说明：仅调整语言衔接和段落排版，观点与论证按原稿保留。
 
 > Complexity within. Clarity without.

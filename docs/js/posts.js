@@ -4,22 +4,22 @@
  * with a per-article TOC sidebar.
  */
 const POSTS = [
-  { id: 'p1',  code: '08b', file: '润色版_08b_EROI：努力—回报率指标体系.md', title: 'EROI：努力—回报率指标体系' },
-  { id: 'p2',  code: '08c', file: '润色版_08c_不可预见性分级定义（Ver 1.0）.md', title: '不可预见性分级定义（Ver 1.0）' },
-  { id: 'p3',  code: '08g', file: '润色版_08g_成就谱系坍塌.md', title: '成就谱系坍塌' },
-  { id: 'p4',  code: '08h', file: '润色版_08h_艺术渲染完备性（ARC）.md', title: '艺术渲染完备性（ARC）' },
-  { id: 'p5',  code: '08i', file: '润色版_08i_第十艺术假说.md', title: '第十艺术假说' },
-  { id: 'p6',  code: '08j', file: '润色版_08j_下一個牛顿，可能在生物学里.md', title: '下一個牛顿，可能在生物学里' },
-  { id: 'p7',  code: '08k', file: '润色版_08k_GTA6之后，再无GTA：通用世界引擎的终局与重生.md', title: 'GTA6之后，再无GTA：通用世界引擎的终局与重生' },
-  { id: 'p8',  code: '08l', file: '润色版_08l_元宇宙需要的东西.md', title: '元宇宙需要的东西' },
-  { id: 'p9',  code: '08m', file: '润色版_08m_第十艺术元宇宙构想.md', title: '第十艺术元宇宙构想' },
-  { id: 'p10', code: '08n', file: '润色版_08n_ENTROPIA DESIGN PHILOSOPHY.md', title: 'ENTROPIA DESIGN PHILOSOPHY' },
-  { id: 'p11', code: '08o', file: '润色版_08o_《我的叔叔于勒》：为什么有些人走遍世界，也没有真正的容身之处.md', title: '《我的叔叔于勒》：为什么有些人走遍世界，也没有真正的容身之处' },
-  { id: 'p12', code: '08p', file: '润色版_08p_从生存到自由：人类生存范式的五次跃迁.md', title: '从生存到自由：人类生存范式的五次跃迁' },
-  { id: 'p13', code: '08r', file: '润色版_08r_太空新国家假说：文明为什么需要新的大陆.md', title: '太空新国家假说：文明为什么需要新的大陆' },
-  { id: 'p14', code: '08u', file: '润色版_08u_统计学反出生主义：为何在这个时代，不生是对生命最大的慈悲.md', title: '统计学反出生主义：为何在这个时代，不生是对生命最大的慈悲' },
-  { id: 'p15', code: '08w', file: '润色版_08w_社会流动性的齐奥尔科夫斯基约束.md', title: '社会流动性的齐奥尔科夫斯基约束' },
-  { id: 'p16', code: '08x', file: '润色版_08x_制作委员会：问题很大，但为什么不能简单“取缔”.md', title: '制作委员会：问题很大，但为什么不能简单“取缔”' }
+  { id: 'p1',  code: '08b', date: '2026-09-04', file: '润色版_08b_EROI：努力—回报率指标体系.md', title: 'EROI：努力—回报率指标体系' },
+  { id: 'p2',  code: '08c', date: '2026-06-23', file: '润色版_08c_不可预见性分级定义（Ver 1.0）.md', title: '不可预见性分级定义（Ver 1.0）' },
+  { id: 'p3',  code: '08g', date: '2026-08-13', file: '润色版_08g_成就谱系坍塌.md', title: '成就谱系坍塌' },
+  { id: 'p4',  code: '08h', date: '2026-08-19', file: '润色版_08h_艺术渲染完备性（ARC）.md', title: '艺术渲染完备性（ARC）' },
+  { id: 'p5',  code: '08i', date: '2026-08-29', file: '润色版_08i_第十艺术假说.md', title: '第十艺术假说' },
+  { id: 'p6',  code: '08j', date: '2026-08-29', file: '润色版_08j_下一個牛顿，可能在生物学里.md', title: '下一個牛顿，可能在生物学里' },
+  { id: 'p7',  code: '08k', date: '2026-08-30', file: '润色版_08k_GTA6之后，再无GTA：通用世界引擎的终局与重生.md', title: 'GTA6之后，再无GTA：通用世界引擎的终局与重生' },
+  { id: 'p8',  code: '08l', date: '2026-08-30', file: '润色版_08l_元宇宙需要的东西.md', title: '元宇宙需要的东西' },
+  { id: 'p9',  code: '08m', date: '2026-08-30', file: '润色版_08m_第十艺术元宇宙构想.md', title: '第十艺术元宇宙构想' },
+  { id: 'p10', code: '08n', date: '2026-09-10', file: '润色版_08n_ENTROPIA DESIGN PHILOSOPHY.md', title: 'ENTROPIA DESIGN PHILOSOPHY' },
+  { id: 'p11', code: '08o', date: '2026-09-11', file: '润色版_08o_《我的叔叔于勒》：为什么有些人走遍世界，也没有真正的容身之处.md', title: '《我的叔叔于勒》：为什么有些人走遍世界，也没有真正的容身之处' },
+  { id: 'p12', code: '08p', date: '日期待核实', file: '润色版_08p_从生存到自由：人类生存范式的五次跃迁.md', title: '从生存到自由：人类生存范式的五次跃迁' },
+  { id: 'p13', code: '08r', date: '2026-09-10', file: '润色版_08r_太空新国家假说：文明为什么需要新的大陆.md', title: '太空新国家假说：文明为什么需要新的大陆' },
+  { id: 'p14', code: '08u', date: '日期待核实', file: '润色版_08u_统计学反出生主义：为何在这个时代，不生是对生命最大的慈悲.md', title: '统计学反出生主义：为何在这个时代，不生是对生命最大的慈悲' },
+  { id: 'p15', code: '08w', date: '2026-07-20', file: '润色版_08w_社会流动性的齐奥尔科夫斯基约束.md', title: '社会流动性的齐奥尔科夫斯基约束' },
+  { id: 'p16', code: '08x', date: '日期待核实', file: '润色版_08x_制作委员会：问题很大，但为什么不能简单“取缔”.md', title: '制作委员会：问题很大，但为什么不能简单“取缔”' }
 ];
 
 const PREFACE_TITLE = '序言：关于人类和现有社会系统的一些思考';
@@ -60,8 +60,8 @@ const RAW_BASE = 'https://raw.githubusercontent.com/SakuraEntropia/SakuraEntropi
     const isPreface = entry.kind === 'preface';
     const title = isPreface ? PREFACE_TITLE : esc(entry.title);
     const meta = isPreface
-      ? '<span class="tag">序言</span><span>2026-11-19</span><span>约 3.7 万字</span>'
-      : `<span class="tag">随笔</span><span>${entry.code}</span><span>2026-11-19</span>`;
+      ? '<span class="tag">序言</span><span>更新于 2026-11-20</span><span>约 3.7 万字</span>'
+      : `<span class="tag">随笔</span><span>${entry.code}</span><span>${entry.date}</span>`;
     return `
       <article class="card" id="card-${entry.id}" data-id="${entry.id}">
         <button class="card-head" data-id="${entry.id}" aria-expanded="false">
